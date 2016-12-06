@@ -23,6 +23,7 @@ void	init_glut(int ac, char **av)
 {
 	init_g_pos();
 	glutInit(&ac, av);
+	texture = LoadTextureRAW("./textures/floor.data", TRUE);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowPosition(200, 200);
 	glutInitWindowSize(720, 720);
