@@ -3,191 +3,179 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: khansman <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/05/15 10:33:49 by khansman          #+#    #+#              #
-#    Updated: 2016/11/12 18:06:22 by khansman         ###   ########.fr        #
+#    Created: 2016/05/15 07:50:12 by ggroener          #+#    #+#              #
+#    Updated: 2016/11/09 11:03:08 by ggroener         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a				\
+NAME = libft.a
 
-FLAGS = -Wall -Werror -Wextra -pedantic
+CC = g++
 
-COMP = clang
+CFLAGS = -Wall -Wextra -Werror -Ofast -g -g3
 
-INC_PATH = includes/
+INCLUDES_PATH = includes/
 
 SRCS_PATH = srcs/
 
+SRCS_NAME1 = ft_atoi.cpp \
+			ft_bzero.cpp \
+			ft_isalnum.cpp \
+			ft_isalpha.cpp \
+			ft_isascii.cpp \
+			ft_isdigit.cpp \
+			ft_isprint.cpp \
+			ft_itoa.cpp \
+			ft_memalloc.cpp \
+			ft_memccpy.cpp \
+			ft_memchr.cpp \
+			ft_memcmp.cpp \
+			ft_memcpy.cpp \
+			ft_memdel.cpp \
+			ft_memmove.cpp \
+			ft_memset.cpp \
+			ft_putchar.cpp \
+			ft_strsub_free.cpp \
+			ft_strtrim_free.cpp \
+			ft_exit.cpp \
+			ft_free_2d_array.cpp \
+
+SRCS_NAME2 = ft_putchar_fd.cpp \
+			ft_putendl.cpp \
+			ft_putendl_fd.cpp \
+			ft_putnbr.cpp \
+			ft_putnbr_fd.cpp \
+			ft_putstr.cpp \
+			ft_putstr_fd.cpp \
+			ft_strcat.cpp \
+			ft_strchr.cpp \
+			ft_strclr.cpp \
+			ft_strcmp.cpp \
+			ft_strcpy.cpp \
+			ft_strdel.cpp \
+			ft_strdup.cpp \
+			ft_strequ.cpp \
+			ft_striter.cpp \
+			ft_striteri.cpp \
+			ft_strjoin.cpp \
+			ft_strlcat.cpp \
+			ft_strlen.cpp \
+			ft_lstnew.cpp \
+			ft_lstdelone.cpp \
+			ft_lstdel.cpp \
+
+SRCS_NAME3 = ft_strmap.cpp \
+			ft_strmapi.cpp \
+			ft_strncat.cpp \
+			ft_strncmp.cpp \
+			ft_strncpy.cpp \
+			ft_strnequ.cpp \
+			ft_strnew.cpp \
+			ft_strnstr.cpp \
+			ft_strrchr.cpp \
+			ft_strsplit.cpp \
+			ft_strstr.cpp \
+			ft_strsub.cpp \
+			ft_strtrim.cpp \
+			ft_tolower.cpp \
+			ft_toupper.cpp \
+			ft_intlen.cpp \
+			ft_printf_diff.cpp \
+			ft_printf_hex.cpp \
+			ft_printf_long.cpp \
+			ft_printf_nbr_ld.cpp \
+			ft_printf.cpp \
+			ft_strisdigit.cpp \
+
+SRCS_NAME4 = ft_lstadd.cpp \
+			ft_lstiter.cpp \
+			ft_lstmap.cpp \
+			ft_strjoin_free1.cpp \
+			ft_strjoin_free2.cpp \
+			ft_strjoin_free3.cpp \
+			ft_atod.cpp \
+			ft_strcount.cpp \
+			ft_strisdigit.cpp \
+			ft_ltoa.cpp \
+			ft_ultoa.cpp \
+			ft_ltoa_base.cpp \
+			ft_ultoa_base.cpp \
+			ft_putwchar.cpp \
+			ft_putwchar_fd.cpp \
+			ft_putwstr.cpp \
+			ft_putwstr_fd.cpp \
+			ft_wstrlen.cpp \
+			ft_wstrsub.cpp \
+			ft_atol.cpp \
+			ft_putul.cpp \
+			ft_putul_fd.cpp \
+			get_next_line.cpp 
+
+SRCS4 = $(addprefix $(SRCS_PATH), $(SRCS_NAME4))
+
+SRCS3 = $(addprefix $(SRCS_PATH), $(SRCS_NAME3))
+
+SRCS2 = $(addprefix $(SRCS_PATH), $(SRCS_NAME2))
+
+SRCS1 = $(addprefix $(SRCS_PATH), $(SRCS_NAME1))
+
+SRCS = $(SRCS1) $(SRCS2) $(SRCS3) $(SRCS4)
+
+HEADER = 	$(INCLUDES_PATH)libft.h \
+
 OBJS_PATH = objs/
 
-HEADER = libft.h
+OBJS_NAME = $(SRCS_NAME1:.cpp=.o) $(SRCS_NAME2:.cpp=.o) $(SRCS_NAME3:.cpp=.o) $(SRCS_NAME4:.cpp=.o)
 
-INCLUDES = libft.h			\
+OBJS = $(addprefix $(OBJS_PATH), $(OBJS_NAME))
 
-SRCS1 =	ft_atoi.c			\
-		ft_bzero.c			\
-		ft_isalnum.c		\
-		ft_isalpha.c		\
-		ft_isascii.c		\
-		ft_isdigit.c		\
-		ft_isprint.c		\
-		ft_itoa.c			\
-		ft_memalloc.c		\
-		ft_memccpy.c		\
-		ft_memchr.c			\
-		ft_memcmp.c			\
-		ft_memcpy.c			\
-		ft_memdel.c			\
-		ft_memmove.c		\
-		ft_memset.c			\
-		ft_putchar_fd.c		\
-		ft_putchar.c		\
-		ft_putendl_fd.c		\
+all: odir $(NAME)
 
-SRCS2 = ft_putendl.c		\
-		ft_putnbr_fd.c		\
-		ft_putnbr.c			\
-		ft_putstr_fd.c		\
-		ft_putstr.c			\
-		ft_strcat.c			\
-		ft_strchr.c			\
-		ft_strclr.c			\
-		ft_strcmp.c			\
-		ft_strcpy.c			\
-		ft_strdel.c			\
-		ft_strdup.c			\
-		ft_strequ.c			\
-		ft_striter.c		\
-		ft_striteri.c		\
-		ft_strjoin.c		\
-		ft_strlcat.c		\
-		ft_strlen.c			\
-		ft_strmap.c			\
-
-SRCS3 = ft_strmapi.c		\
-		ft_strncat.c		\
-		ft_strncmp.c		\
-		ft_strncpy.c		\
-		ft_strnequ.c		\
-		ft_strnew.c			\
-		ft_strnstr.c		\
-		ft_strrchr.c		\
-		ft_strsplit.c		\
-		ft_strstr.c			\
-		ft_strsub.c			\
-		ft_strtrim.c		\
-		ft_tolower.c		\
-		ft_toupper.c		\
-
-SRCS4 = ft_lstnew.c			\
-		ft_lstdelone.c		\
-		ft_lstdel.c			\
-		ft_lstadd.c			\
-		ft_lstiter.c		\
-		ft_lstmap.c			\
-		ft_free2d.c			\
-		ft_get_line.c		\
-		ft_itoa_base.c		\
-		ft_print_hex.c		\
-		get_next_line.c		\
-		ft_die.c			\
-		ft_print_memory.c 	\
-		ft_strtolower.c		\
-
-
-SRCS_ALL = $(SRCS1) $(SRCS2) $(SRCS3) $(SRCS4)
-
-OBJS_ALL = $(SRCS_ALL:.c=.o)
-
-SRCS = $(addprefix $(SRCS_PATH), $(SRCS_ALL))
-
-OBJS = $(addprefix $(OBJS_PATH), $(OBJS_ALL))
-
-define colourecho
-tput setaf 4
-@echo $1
-tput sgr0
-endef
-
-define colourecho2
-tput setaf 10
-@echo $1
-tput sgr0
-endef
-
-all: $(NAME)
-
-$(libft):
-	@if [ ! -f $(NAME) ]; then \
-		make $(NAME) ; else \
-		echo make: "Nothing to be done for 'libft'." ; \
-		fi
-
-$(NAME):
-	@if [ ! -f $(NAME) ]; then \
-		make compile ; else \
-		echo make: "Nothing to be done for 'all.'" ; \
-		fi
-
-compile: qme objs_dir $(OBJS)
-	@$(call colourecho, "Compiling $(NAME)")
+$(NAME): $(OBJS)
+	@echo " - Making $(NAME)"
 	@ar -rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@$(call colourecho, "Done Compiling!")
+	@clear
+	@echo "Make Done!"
 
-$(OBJS_PATH)%.o: $(SRCS_PATH)%.c
-	@$(COMP) $(FLAGS) -o $@ -c $< -I$(INC_PATH)
+$(OBJS_PATH)%.o: $(SRCS_PATH)%.cpp
+	@echo " - Compiling $<"
+	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCLUDES_PATH)
 
-clean:
-	@$(call colourecho, "Removing object files.")
-	@rm -Rf $(OBJS_PATH)
-	@$(call colourecho, "Done cleaning!")
-	@if [ -f includes/libft.h.gch ]; then \
-		rm includes/libft.h.gch; \
-		fi
-
-fclean: clean
-	@$(call colourecho, "Removing $(NAME)")
-	@rm -Rf $(NAME)
-
-re: fclean all
-
-me: qme
-	@$(call colourecho2, "\nAuthor:")
-	cat -e author
-
-objs_dir:
+odir:
 	@mkdir -p $(OBJS_PATH)
 
-qme:
-	@if [ ! -f author ]; then \
-		whoami > author; \
-	fi
-
-norme:
+clean:
+	@echo " - Cleaning objs"
+	@rm -f $(OBJS)
 	@clear
-	@$(call colourecho2, "\nNorminette:")
-	@norminette $(addprefix $(SRCS_PATH), $(SRCS1))
-	@norminette $(addprefix $(SRCS_PATH), $(SRCS2))
-	@norminette $(addprefix $(SRCS_PATH), $(SRCS3))
-	@norminette $(addprefix $(SRCS_PATH), $(SRCS4))
-	@norminette $(addprefix $(INC_PATH), $(HEADER))
+	@echo "clean Done!"
 
-test:
-	@ $@ norminette $^ $(addprefix $(SRC_PATH), $(SRC_ALL))
+fclean: clean
+	@echo " - Cleaning executable"
+	@rm -f $(NAME)
+	@clear
+	@echo "fclean Done!"
 
-format: norme me
+re: fclean all
+	@echo "re Done!"
 
-objs: re
+format: norm
 
-srcs: objs
-
-.IGNORE: Makefile a.out author includes srcs
-
-.DEFAULT: re
-
-.EXPORT_ALL_VARIABLES:
-
-.PHONY: clean fclean re objs_dir
+norm:
+	@clear
+	@echo "Norminette:"
+	@norminette $(HEADER)
+	@echo "Header Done:"
+	@norminette $(SRCS1)
+	@echo "SRCS1 Done:"
+	@norminette $(SRCS2)
+	@echo "SRCS2 Done:"
+	@norminette $(SRCS3)
+	@echo "SRCS3 Done:"
+	@norminette	$(SRCS4)
+	@echo "SRCS4 Done:"
+	
+.PHONY: clean fclean re odir
