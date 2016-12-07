@@ -17,6 +17,7 @@ t_object	generate_pillar(void)
 	t_object	pillar;
 
 	ft_bzero(&pillar, sizeof(t_object));
+	pillar.object_type = O_PILLAR;
 	pillar.size = 1;
 	if (random_range(1, 2) == 1)
 	{
@@ -30,9 +31,8 @@ t_object	generate_pillar(void)
 		pillar.colour.y = 0.85;
 		pillar.colour.z = 0.85;
 	}
-	pillar.speed = 2;
 	pillar.eye.ex = (random_range(1, 3) * 2) - 6;
-	pillar.eye.ez = RENDER_DIST;	
+	pillar.eye.ez = RENDER_DIST;
 	return (pillar);
 }
 
@@ -56,6 +56,6 @@ int			draw_pillar(t_object *pillar)
 		glVertex3f(pillar->eye.ex + 2, 8, pillar->eye.ez);
 	glEnd();
 	glPopMatrix();
-	pillar->eye.ez -= pillar->speed;
+	pillar->eye.ez -= g_game.speed;
 	return ((pillar->eye.ez == 0) ? 2 : (pillar->eye.ez > 0) ? 1 : 0);
 }

@@ -23,7 +23,6 @@ t_object	generate_teapot(void)
 	teapot.eye.ex = (random_range(1, 3) * 2) - 4;
 	teapot.eye.ey = 0.75;
 	teapot.colour.y = 1;
-	teapot.speed = 2;
 	return (teapot);
 }
 
@@ -34,6 +33,6 @@ int			draw_teapot(t_object *teapot)
 	glTranslatef(teapot->eye.ex, teapot->eye.ey, teapot->eye.ez);
 	glutSolidTeapot(teapot->size);
 	glPopMatrix();
-	teapot->eye.ez -= teapot->speed;
+	teapot->eye.ez -= g_game.speed;
 	return ((teapot->eye.ez == 0) ? 2 : (teapot->eye.ez > 0) ? 1 : 0);
 }

@@ -105,7 +105,6 @@ typedef struct	s_object
 	t_eye		eye;
 	char		object_type;
 	int			size;
-	int			speed;
 	t_coord		colour;
 }				t_object;
 
@@ -113,6 +112,7 @@ typedef struct	s_game
 {
 	char		mode;
 	int			time;
+	int			speed;
 	float		score;
 	float		health;
 }				t_game;
@@ -128,11 +128,13 @@ typedef struct	s_game
 t_pos			g_pos;
 t_eye			g_eye;
 GLuint			texture;
+t_game			g_game;
 # else
 
 extern t_pos	g_pos;
 extern t_eye	g_eye;
 extern GLuint	texture;
+extern t_game	g_game;
 # endif
 
 /*

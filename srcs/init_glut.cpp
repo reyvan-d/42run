@@ -16,7 +16,9 @@ void	init_g_pos(void)
 {
 	bzero(&g_pos, sizeof(t_pos));
 	bzero(&g_eye, sizeof(t_eye));
+	bzero(&g_game, sizeof(t_game));
 	g_pos.z = 5.0;
+	g_game.speed = 2;
 }
 
 void	init_glut(int ac, char **av)
