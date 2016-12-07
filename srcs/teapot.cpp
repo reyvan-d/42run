@@ -23,7 +23,6 @@ t_object	generate_teapot(void)
 	teapot.eye.ex = (random_range(1, 3) * 2) - 4;
 	teapot.eye.ey = 1;
 	teapot.colour.x = 1;
-	printf("Teapot made. eye.ez = %f\n", teapot.eye.ez);//debug
 	return (teapot);
 }
 
@@ -34,7 +33,6 @@ int			draw_teapot(t_object *teapot)
 	glTranslatef(teapot->eye.ex, teapot->eye.ey, teapot->eye.ez);
 	glutSolidTeapot(teapot->size);
 	glPopMatrix();
-	printf("teapot drawn at (%f; %f; %f)\n", teapot->eye.ex, teapot->eye.ey, teapot->eye.ez);//debug
 	teapot->eye.ez -= 2;
 	return ((teapot->size == 0) ? 2 : (teapot->size > 0) ? 1 : 0);
 }
