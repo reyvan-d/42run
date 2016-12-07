@@ -20,6 +20,6 @@ void	render_objects(void)
 		objects[0] = generate_teapot();
 	draw_teapot(&objects[0]);*/
 	if (objects[1].eye.ez < 2)
-		objects[1] = generate_cube();
-	draw_cube(&objects[1]);
+		objects[1] = generate_log();
+	draw_log(&objects[1]);
 }

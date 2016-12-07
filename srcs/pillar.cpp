@@ -42,7 +42,6 @@ int			draw_pillar(t_object *pillar)
 		return (-1);
 	glPushMatrix();
 	glColor3f(pillar->colour.x, pillar->colour.y, pillar->colour.z);
-	glTranslatef(pillar->eye.ex, pillar->eye.ey, pillar->eye.ez);
 	glBegin(GL_QUADS);
 		glVertex3f(pillar->eye.ex, 0, pillar->eye.ez);
 		glVertex3f(pillar->eye.ex + 2, 0, pillar->eye.ez);

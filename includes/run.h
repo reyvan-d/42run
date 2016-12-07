@@ -55,6 +55,7 @@
 # define O_SPHERE  2
 # define O_TEAPOT  3
 # define O_PILLAR  4
+# define O_LOG     5
 
 /*
 ** Gameplay
@@ -197,6 +198,11 @@ void			release_key(int key, int x, int y);
 */
 t_object		generate_cube(void);
 int				draw_cube(t_object *cube);
+/*
+** render_log.cpp
+*/
+t_object		generate_log(void);
+int				draw_log(t_object *log);
 /*
 ** render_objects.cpp
 */
