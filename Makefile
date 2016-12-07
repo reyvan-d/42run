@@ -100,6 +100,14 @@ fclean: clean
 re: fclean all
 	@$(call colourecho, "re Done!")
 
+qre:
+	@$(call colourecho, " - Clearing object files")
+	@rm -f $(OBJS)
+	@rm -f $(NAME)
+	@$(call colourecho, "clean done!")
+	@Make odir
+	@Make $(NAME)
+
 format: norme me
 
 norme: norm
