@@ -35,19 +35,13 @@ void	calc_collision(t_object object)
 
 	tmp = (g_eye.ex < -1) ? OL_LEFT : (g_eye.ex > 1) ? OL_RIGHT : OL_CENTER;
 	tmp |= (g_eye.ey < 2.4) ? OL_BOTTOM : (g_eye.ey < 6) ? OL_MID : OL_TOP;
-	if ((tmp & OL_LEFT) && (object.lane & OL_LEFT))
+	if (((tmp & OL_LEFT) && (object.lane & OL_LEFT)) ||
+			((tmp & OL_RIGHT) & (object.lane & OL_RIGHT)) ||
+			((tmp & OL_CENTER) & (object.lane & OL_CENTER)))
 	{
-		if ((tmp & OL_BOTTOM) && (object.lane & OL_BOTTOM))
-			collide(object);
-	}
-	else if ((tmp & OL_RIGHT) & (object.lane & OL_RIGHT))
-	{
-		if ((tmp & OL_BOTTOM) & (object.lane & OL_BOTTOM))
-			collide(object);
-	}
-	else if ((tmp & OL_CENTER) & (object.lane & OL_CENTER))
-	{
-		if ((tmp & OL_BOTTOM) && (object.lane & OL_BOTTOM))
+		if (((tmp & OL_BOTTOM) && (object.lane & OL_BOTTOM)) ||
+				((tmp & OL_MID) && (object.lane & OL_MID)) ||
+				((tmp & OL_TOP) && (object.lane & OL_TOP)))
 			collide(object);
 	}
 }
