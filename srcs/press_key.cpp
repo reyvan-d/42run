@@ -46,6 +46,7 @@ void	press_key(int key, int x, int y)
 		g_game.mode = MODE_PLAY;
 		if (g_game.score > g_game.high_score)
 			g_game.high_score = g_game.high_score;
+		g_game.time = 0;
 		g_game.score = 0;
 		g_game.health = 100;
 	}

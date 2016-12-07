@@ -153,6 +153,7 @@ void	render_scene(void)
 	{
 		render_game_stats();
 		g_game.score += 0.1;
+		g_game.time += 0.1;
 	}
 	else if (g_game.mode == MODE_STOP)
 		render_game_over();
