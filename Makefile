@@ -35,6 +35,7 @@ SRCS_NAME = change_size.cpp				\
 			press_key.cpp				\
 			random_range.cpp			\
 			release_key.cpp				\
+			render_cube.cpp				\
 			render_objects.cpp			\
 			render_scene.cpp			\
 			teapot.cpp					\

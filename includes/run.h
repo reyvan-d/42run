@@ -193,6 +193,11 @@ int				random_range(int min, int max);
 */
 void			release_key(int key, int x, int y);
 /*
+** render_cube.cpp
+*/
+t_object		generate_cube(void);
+int				draw_cube(t_object *cube);
+/*
 ** render_objects.cpp
 */
 void			render_objects(void);

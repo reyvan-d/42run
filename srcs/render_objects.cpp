@@ -16,10 +16,10 @@ void	render_objects(void)
 {
 	static t_object		objects[20];
 
-//	if (objects[0].eye.ez < 2)
-//		objects[0] = generate_teapot();
-//	draw_teapot(&objects[0]);
+	/*if (objects[0].eye.ez < 2)
+		objects[0] = generate_teapot();
+	draw_teapot(&objects[0]);*/
 	if (objects[1].eye.ez < 2)
-		objects[1] = generate_pillar();
-	draw_pillar(&objects[1]);
+		objects[1] = generate_cube();
+	draw_cube(&objects[1]);
 }
