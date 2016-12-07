@@ -19,6 +19,8 @@ void	init_g_pos(void)
 	bzero(&g_game, sizeof(t_game));
 	g_pos.z = 5.0;
 	g_game.speed = 2;
+	g_game.mode = MODE_PLAY;
+	//g_game.render_min = 5;
 }
 
 void	init_glut(int ac, char **av)

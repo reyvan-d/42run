@@ -63,6 +63,13 @@
 # define RENDER_DIST  200
 
 /*
+** Gamemode
+*/
+# define MODE_PLAY    1
+# define MODE_STOP    2
+# define MODE_PAUSE   3
+
+/*
 ** ----------\
 ** Structures |
 ** ----------/
@@ -115,6 +122,7 @@ typedef struct	s_game
 	int			time;
 	int			speed;
 	int			render;
+	int			render_min;
 	float		score;
 	float		health;
 }				t_game;

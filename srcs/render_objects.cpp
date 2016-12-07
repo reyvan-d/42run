@@ -12,14 +12,60 @@
 
 #include "../includes/run.h"
 
+void	generate_object(t_object *object)
+{
+	int		k;
+
+	k = random_range(1, 5);
+	if (k == O_CUBE && (g_game.render += 50))
+		*object = generate_cube();
+	else if (k == O_SPHERE)
+		return ;
+	else if (k == O_TEAPOT && (g_game.render += 50))
+		*object = generate_teapot();
+	else if (k == O_PILLAR && (g_game.render += 100))
+		*object = generate_pillar();
+	else if (k == O_LOG && (g_game.render += 50))
+		*object = generate_log();
+}
+
+void	draw_object(t_object *object)
+{
+	if (!object || object->object_type < 1)
+		return ;
+	if (object->object_type == O_CUBE)
+		draw_cube(object);
+	else if (object->object_type == O_SPHERE)
+		return ;
+	else if (object->object_type == O_TEAPOT)
+		draw_teapot(object);
+	else if (object->object_type == O_PILLAR)
+		draw_pillar(object);
+	else if (object->object_type == O_LOG)
+		draw_log(object);
+}
+
 void	render_objects(void)
 {
 	static t_object		objects[20];
+	int					k = 0;
 
 	/*if (objects[0].eye.ez < 2)
 		objects[0] = generate_teapot();
 	draw_teapot(&objects[0]);*/
-	if (objects[1].eye.ez < 2)
+	/*if (objects[1].eye.ez < 2)
 		objects[1] = generate_log();
-	draw_log(&objects[1]);
+	draw_log(&objects[1]);*/
+
+	while (k < 20)
+	{
+		if ((objects[k].eye.ez < 2) && (g_game.render <= g_game.render_min))
+			generate_object(&objects[k]);
+		else if (objects[k].eye.ez < 2)
+			bzero(&objects[k], sizeof(t_object));
+		else
+			draw_object(&objects[k]);
+		k++;
+	}
+	g_game.render--;
 }
