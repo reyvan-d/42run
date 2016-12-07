@@ -31,9 +31,9 @@ void	press_key(int key, int x, int y)
 	(void)x;
 	(void)y;
 	if (key == GLUT_KEY_RIGHT && g_eye.ex > -2)
-		g_eye.ex -= 2;
+		g_eye.ex -= 3;
 	else if (key == GLUT_KEY_LEFT && g_eye.ex < 2)
-		g_eye.ex += 2;
+		g_eye.ex += 3;
 	else if (key == GLUT_KEY_UP && g_eye.ey < 0.2)
 		g_eye.ey = 5;
 	else if (key == GLUT_KEY_DOWN)
