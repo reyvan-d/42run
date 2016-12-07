@@ -97,10 +97,10 @@ void	draw_walls(void)
 		glTexCoord2d(1.0,0.0); glVertex2d(1.0,0.0);
 		glTexCoord2d(1.0,1.0); glVertex2d(1.0,1.0);
 		glTexCoord2d(0.0,1.0); glVertex2d(0.0,1.0);
-		//glTexCoord2d(-4, 0); glVertex3f(-4, 0, -5);
-		//glTexCoord2d(-4, 0); glVertex3f(-4, 0, 100);
-		//glTexCoord2d(4, 0); glVertex3f(4, 0, 100);
-		//glTexCoord2d(4, 0); glVertex3f(4, 0, -5);
+		glTexCoord2d(-4, 0); glVertex3f(-4, 0, -5);
+		glTexCoord2d(-4, 0); glVertex3f(-4, 0, 100);
+		glTexCoord2d(4, 0); glVertex3f(4, 0, 100);
+		glTexCoord2d(4, 0); glVertex3f(4, 0, -5);
 		glColor3f(0.2, 0.2, 0.2);/*Roof*/
 		glVertex3f(-4, 8, -5);
 		glVertex3f(-4, 8, 100);
