@@ -17,15 +17,15 @@ void	generate_object(t_object *object)
 	int		k;
 
 	k = random_range(1, 5);
-	if (k == O_CUBE && (g_game.render += 50))
+	if (k == O_CUBE && (g_game.render += random_range(20, 50)))
 		*object = generate_cube();
 	else if (k == O_SPHERE)
 		return ;
-	else if (k == O_TEAPOT && (g_game.render += 50))
+	else if (k == O_TEAPOT && (g_game.render += random_range(20, 50)))
 		*object = generate_teapot();
-	else if (k == O_PILLAR && (g_game.render += 100))
+	else if (k == O_PILLAR && (g_game.render += random_range(40, 100)))
 		*object = generate_pillar();
-	else if (k == O_LOG && (g_game.render += 50))
+	else if (k == O_LOG && (g_game.render += random_range(30, 60)))
 		*object = generate_log();
 }
 
