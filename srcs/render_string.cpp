@@ -52,11 +52,43 @@ void	render_game_stats(void)
 	glColor3f(1, 1, 1);
 	sprintf(tmp, "Score: %.2f", g_game.score);
 	renderBitmapString(5, 30, 0, GLUT_BITMAP_HELVETICA_18, tmp);
-	bzero(tmp, 50);
 	sprintf(tmp, "Health: %.2f%%", g_game.health);
 	renderBitmapString(5, 50, 0, GLUT_BITMAP_HELVETICA_18, tmp);
 	glPopMatrix();
 
 	restore_perspective_projection();
+}
 
+void	render_game_over(void)
+{
+	char		tmp[50];
+
+	set_orthographic_projection();
+
+	(void)tmp;
+	glPushMatrix();
+	glLoadIdentity();
+	glColor3f(1, 0.1, 0.1);
+	sprintf(tmp, "GAME OVER. Your Score: %.2f", g_game.score);
+	renderBitmapString((g_win.width / 2) + 140, g_win.height / 2, 0, GLUT_BITMAP_TIMES_ROMAN_24, tmp);
+	glPopMatrix();
+
+	restore_perspective_projection();
+}
+
+void	render_game_paused(void)
+{
+	char		tmp[50];
+
+	set_orthographic_projection();
+
+	(void)tmp;
+	glPushMatrix();
+	glLoadIdentity();
+	glColor3f(1, 0.1, 0.1);
+	sprintf(tmp, "PAUSED");
+	renderBitmapString((g_win.width / 2) - 50, g_win.height / 2, 0, GLUT_BITMAP_TIMES_ROMAN_24, tmp);
+	glPopMatrix();
+
+	restore_perspective_projection();
 }
