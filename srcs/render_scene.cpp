@@ -12,9 +12,8 @@
 
 #include "../includes/run.h"
 
-GLuint LoadTextureRAW(const char *filename, int wrap)
+GLuint LoadTextureRAW(const char *filename, int wrap, int width, int height)
 {
-    int				width, height;
 	unsigned char	*data;
     FILE			*file;
 
@@ -26,8 +25,6 @@ GLuint LoadTextureRAW(const char *filename, int wrap)
 	}
 
     // allocate buffer
-    width = 256;
-    height = 256;
     data = (unsigned char *)malloc( width * height * 3 );
 
     // read texture data
@@ -61,7 +58,7 @@ GLuint LoadTextureRAW(const char *filename, int wrap)
 	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrap ? GL_REPEAT : GL_CLAMP );
 	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrap ? GL_REPEAT : GL_CLAMP );
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 
     // build our texture mipmaps
@@ -93,34 +90,53 @@ void	draw_36_snowmen(void)
 
 void	draw_walls(void)
 {
-	texture = LoadTextureRAW("./textures/floor.data", 1);
+	static float	i;
+	texture = LoadTextureRAW("./textures/floor.data", 1, 256, 256);
 	glEnable(GL_TEXTURE_2D);
 	glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE );
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glBegin(GL_QUADS);/*Draw the ground*/
 		glColor3f(0.281176, 0.25098, 0.082353);/*Floor*/
-		glTexCoord2d(-4, 0); glVertex3f(-4, 0, -5);
-		glTexCoord2d(-4, 0); glVertex3f(-4, 0, 100);
-		glTexCoord2d(4, 0); glVertex3f(4, 0, 100);
-		glTexCoord2d(4, 0); glVertex3f(4, 0, -5);
+		glTexCoord2d(0, i); glVertex3f(-4, 0, -5);
+		glTexCoord2d(0, i + 1); glVertex3f(-4, 0, 100);
+		glTexCoord2d(1, i + 1); glVertex3f(4, 0, 100);
+		glTexCoord2d(1, i); glVertex3f(4, 0, -5);
 	glEnd();
+	glDeleteTextures(1, &texture);
 		glDisable(GL_TEXTURE_2D);
+		texture = LoadTextureRAW("./textures/wires.data", 1, 512, 512);
+	glEnable(GL_TEXTURE_2D);
+	glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE );
+	glBindTexture(GL_TEXTURE_2D, texture);
 	glBegin(GL_QUADS);
 		glColor3f(0.2, 0.2, 0.2);/*Roof*/
-		glVertex3f(-4, 8, -5);
-		glVertex3f(-4, 8, 100);
-		glVertex3f(4, 8, 100);
-		glVertex3f(4, 8, -5);
-		glColor3f(0.85546875, 0.2578125, 0.1796875);/*Walls*/
-		glVertex3f(-4, 0, -5);
-		glVertex3f(-4, 0, 100);
-		glVertex3f(-4, 8, 100);
-		glVertex3f(-4, 8, -5);
-		glVertex3f(4, 0, -5);
-		glVertex3f(4, 0, 100);
-		glVertex3f(4, 8, 100);
-		glVertex3f(4, 8, -5);
+		glTexCoord2d(0, i); glVertex3f(-4, 8, -5);
+		glTexCoord2d(0, i + 1); glVertex3f(-4, 8, 100);
+		glTexCoord2d(1, i + 1); glVertex3f(4, 8, 100);
+		glTexCoord2d(1, i); glVertex3f(4, 8, -5);
 	glEnd();
+	glDeleteTextures(1, &texture);
+	texture = LoadTextureRAW("./textures/walls.data", 1, 1024, 1024);
+	glEnable(GL_TEXTURE_2D);
+	glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE );
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glBegin(GL_QUADS);
+		glColor3f(0.85546875, 0.2578125, 0.1796875);/*Walls*/
+		glTexCoord2d(0, i); glVertex3f(-4, 0, -5);
+		glTexCoord2d(0, i + 1); glVertex3f(-4, 0, 100);
+		glTexCoord2d(1, i + 1); glVertex3f(-4, 8, 100);
+		glTexCoord2d(1, i); glVertex3f(-4, 8, -5);
+		glTexCoord2d(0, i); glVertex3f(4, 0, -5);
+		glTexCoord2d(0, i + 1); glVertex3f(4, 0, 100);
+		glTexCoord2d(1, i + 1); glVertex3f(4, 8, 100);
+		glTexCoord2d(1, i); glVertex3f(4, 8, -5);
+	glEnd();
+	glDeleteTextures(1, &texture);
+	glDisable(GL_TEXTURE_2D);
+	if (i == 1)
+		i = 0;
+	else
+		i += 0.02f;
 }
 
 /*
