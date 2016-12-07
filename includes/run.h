@@ -46,6 +46,13 @@
 */
 
 /*
+** Object Defines
+*/
+# define O_CUBE    1
+# define O_SPHERE  2
+# define O_TEAPOT  3
+
+/*
 ** ----------\
 ** Structures |
 ** ----------/
@@ -64,7 +71,14 @@ typedef struct	s_pos
 	float		deltaMove;
 }				t_pos;
 
-typedef struct s_eye
+typedef struct	s_coord
+{
+	float		x;
+	float		y;
+	float		z;
+}				t_coord;
+
+typedef struct	s_eye
 {
 	float		ex;
 	float		ey;
@@ -80,6 +94,8 @@ typedef struct s_eye
 typedef struct	s_object
 {
 	t_eye		eye;
+	char		object_type;
+	int			size;
 }				t_object;
 
 /*
