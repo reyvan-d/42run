@@ -32,8 +32,11 @@ SRCS_NAME = change_size.cpp				\
 			init_glut.cpp				\
 			main.cpp					\
 			press_key.cpp				\
+			random_range.cpp			\
 			release_key.cpp				\
+			render_objects.cpp			\
 			render_scene.cpp			\
+			teapot.cpp					\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 

@@ -36,6 +36,8 @@
 # include <ctype.h>
 # include <termios.h>
 # include <term.h>
+#include <iostream>
+#include <random>
 
 # include "../libft/includes/libft.h"
 
@@ -96,6 +98,7 @@ typedef struct	s_object
 	t_eye		eye;
 	char		object_type;
 	int			size;
+	t_coord		colour;
 }				t_object;
 
 /*
@@ -159,16 +162,28 @@ void			init_glut(int ac, char **av);
 */
 void			press_key(int key, int x, int y);
 /*
+** random_range.cpp
+*/
+int				random_range(int min, int max);
+/*
 ** release_key.cpp
 */
 void			release_key(int key, int x, int y);
+/*
+** render_objects.cpp
+*/
+void			render_objects(void);
 /*
 ** render_scene.cpp
 */
 void			draw_36_snowmen(void);
 void			draw_walls(void);
 void			render_scene(void);
-
+/*
+** teapot.cpp
+*/
+t_object		generate_teapot(void);
+int				draw_teapot(t_object *teapot);
 
 /*
 **                                /----------\                                **
