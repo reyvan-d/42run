@@ -145,6 +145,7 @@ typedef struct	s_game
 	int			render_min;
 	float		score;
 	float		health;
+	float		high_score;
 }				t_game;
 
 /*

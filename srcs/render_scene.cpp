@@ -158,6 +158,8 @@ void	render_scene(void)
 		else
 		{
 			render_game_over();
+			if (g_game.score > g_game.high_score)
+				g_game.high_score = g_game.high_score;
 		}
 	}
 	else if (g_game.mode == MODE_PAUSE)
