@@ -19,10 +19,11 @@ t_object	generate_teapot(void)
 	bzero(&teapot, sizeof(t_object));
 	teapot.size = 1;
 	teapot.object_type = O_TEAPOT;
-	teapot.eye.ez = 200;
+	teapot.eye.ez = RENDER_DIST;
 	teapot.eye.ex = (random_range(1, 3) * 2) - 4;
 	teapot.eye.ey = 0.75;
 	teapot.colour.y = 1;
+	teapot.speed = 2;
 	return (teapot);
 }
 
@@ -33,6 +34,6 @@ int			draw_teapot(t_object *teapot)
 	glTranslatef(teapot->eye.ex, teapot->eye.ey, teapot->eye.ez);
 	glutSolidTeapot(teapot->size);
 	glPopMatrix();
-	teapot->eye.ez -= 2;
-	return ((teapot->size == 0) ? 2 : (teapot->size > 0) ? 1 : 0);
+	teapot->eye.ez -= teapot->speed;
+	return ((teapot->eye.ez == 0) ? 2 : (teapot->eye.ez > 0) ? 1 : 0);
 }

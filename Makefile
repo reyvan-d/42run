@@ -31,6 +31,7 @@ SRCS_NAME = change_size.cpp				\
 			change_size.cpp				\
 			init_glut.cpp				\
 			main.cpp					\
+			pillar.cpp					\
 			press_key.cpp				\
 			random_range.cpp			\
 			release_key.cpp				\

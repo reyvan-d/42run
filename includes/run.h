@@ -50,9 +50,16 @@
 /*
 ** Object Defines
 */
+
 # define O_CUBE    1
 # define O_SPHERE  2
 # define O_TEAPOT  3
+# define O_PILLAR  4
+
+/*
+** Gameplay
+*/
+# define RENDER_DIST  200
 
 /*
 ** ----------\
@@ -98,8 +105,17 @@ typedef struct	s_object
 	t_eye		eye;
 	char		object_type;
 	int			size;
+	int			speed;
 	t_coord		colour;
 }				t_object;
+
+typedef struct	s_game
+{
+	char		mode;
+	int			time;
+	float		score;
+	float		health;
+}				t_game;
 
 /*
 ** ----------\
@@ -157,6 +173,11 @@ void			change_size(int width, int height);
 */
 void			init_g_pos(void);
 void			init_glut(int ac, char **av);
+/*
+** pillar.cpp
+*/
+t_object		generate_pillar(void);
+int				draw_pillar(t_object *pillar);
 /*
 ** press_key.cpp
 */

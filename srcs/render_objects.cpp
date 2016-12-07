@@ -16,13 +16,10 @@ void	render_objects(void)
 {
 	static t_object		objects[20];
 
-	if (objects[0].eye.ez < 2)
-		objects[0] = generate_teapot();
-	draw_teapot(&objects[0]);
-
-/*	glPushMatrix();
-	glColor3f(0, 1, 0);
-	glTranslatef(0, 1, 20);
-	glutSolidTeapot(1);
-	glPopMatrix();*/
+//	if (objects[0].eye.ez < 2)
+//		objects[0] = generate_teapot();
+//	draw_teapot(&objects[0]);
+	if (objects[1].eye.ez < 2)
+		objects[1] = generate_pillar();
+	draw_pillar(&objects[1]);
 }
