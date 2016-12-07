@@ -42,9 +42,7 @@ void	render_string(t_coord pos, void *font, const char *str)
 
 void	render_game_stats(void)
 {
-//	t_coord		pos = {0, 1, 2};
-//	void		*font = GLUT_BITMAP_9_BY_15;
-	char		tmp[80];
+	char		tmp[50];
 
 	set_orthographic_projection();
 
@@ -54,6 +52,9 @@ void	render_game_stats(void)
 	glColor3f(1, 1, 1);
 	sprintf(tmp, "Score: %.2f", g_game.score);
 	renderBitmapString(5, 30, 0, GLUT_BITMAP_HELVETICA_18, tmp);
+	bzero(tmp, 50);
+	sprintf(tmp, "Health: %.2f%%", g_game.health);
+	renderBitmapString(5, 50, 0, GLUT_BITMAP_HELVETICA_18, tmp);
 	glPopMatrix();
 
 	restore_perspective_projection();
