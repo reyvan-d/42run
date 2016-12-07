@@ -42,7 +42,11 @@ void	press_key(int key, int x, int y)
 		g_game.mode = (g_game.mode == MODE_PLAY) ? MODE_PAUSE :
 			(g_game.mode == MODE_PAUSE) ? MODE_PLAY : g_game.mode;
 	else if (key == 'r' && g_game.mode == MODE_STOP)
+	{
 		g_game.mode = MODE_PLAY;
+		g_game.score = 0;
+		g_game.health = 100;
+	}
 	else if (key == 27)
 		exit(0);
 }
