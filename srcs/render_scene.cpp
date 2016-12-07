@@ -143,5 +143,6 @@ void	render_scene(void)
 	if (g_eye.ey > 0)
 		g_eye.ey -= 0.2;
 	draw_walls();
+	render_objects();
 	glutSwapBuffers();
 }
