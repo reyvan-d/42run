@@ -28,6 +28,8 @@ t_object	generate_teapot(void)
 
 int			draw_teapot(t_object *teapot)
 {
+	if (teapot->object_type != O_TEAPOT)
+		return (-1);
 	glPushMatrix();
 	glColor3f(teapot->colour.x, teapot->colour.y, teapot->colour.z);
 	glTranslatef(teapot->eye.ex, teapot->eye.ey, teapot->eye.ez);

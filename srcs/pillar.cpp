@@ -38,6 +38,8 @@ t_object	generate_pillar(void)
 
 int			draw_pillar(t_object *pillar)
 {
+	if (pillar->object_type != O_PILLAR)
+		return (-1);
 	glPushMatrix();
 	glColor3f(pillar->colour.x, pillar->colour.y, pillar->colour.z);
 	glTranslatef(pillar->eye.ex, pillar->eye.ey, pillar->eye.ez);
