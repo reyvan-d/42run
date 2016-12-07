@@ -145,14 +145,14 @@ void	render_scene(void)
 		0.0 + g_eye.ex, 1.0 + g_eye.ey, 1.0 + g_eye.ez,
 		0.0, 2.0, 0.0);
 	if (g_eye.ey > 0 && (g_game.mode == MODE_PLAY || g_game.mode == MODE_STOP))
-		g_eye.ey -= 0.2;
+		g_eye.ey -= 0.1 * g_game.speed;
 	draw_walls();
 	if (g_game.mode == MODE_PLAY || g_game.mode == MODE_STOP)
 		render_objects();
 	if (g_game.mode == MODE_PLAY)
 	{
 		render_game_stats();
-		g_game.score += 0.1;
+		g_game.speed += 0.0001;
 		g_game.time += 0.1;
 	}
 	else if (g_game.mode == MODE_STOP)
