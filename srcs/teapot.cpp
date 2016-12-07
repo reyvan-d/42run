@@ -21,8 +21,8 @@ t_object	generate_teapot(void)
 	teapot.object_type = O_TEAPOT;
 	teapot.eye.ez = 200;
 	teapot.eye.ex = (random_range(1, 3) * 2) - 4;
-	teapot.eye.ey = 1;
-	teapot.colour.x = 1;
+	teapot.eye.ey = 0.75;
+	teapot.colour.y = 1;
 	return (teapot);
 }
 
