@@ -14,7 +14,7 @@
 
 void	collide(t_object object)
 {
-	if (object.object_type == O_CUBE || object.object_type == O_SPHERE)
+/*	if (object.object_type == O_CUBE || object.object_type == O_SPHERE)
 		g_game.health -= 5;
 	else if (object.object_type == O_PILLAR || object.object_type == O_LOG)
 		g_game.health -= 10;
@@ -23,6 +23,10 @@ void	collide(t_object object)
 		g_game.health += 0.5;
 		g_game.score += 2;
 	}
+*/
+	g_game.health -= object.weight;
+	g_game.score -= object.weight / 10;
+
 
 	if (g_game.health > 100)
 		g_game.health = 100;

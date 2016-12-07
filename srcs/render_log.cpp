@@ -25,6 +25,7 @@ t_object	generate_log(void)
 	log.colour.y = 0.49609375;
 	log.colour.z = 0.19921875;
 	log.lane = OL_LEFT | OL_CENTER | OL_RIGHT | OL_BOTTOM;
+	log.weight = 10;
 	return (log);
 }
 
