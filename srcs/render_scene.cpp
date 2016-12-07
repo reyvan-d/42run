@@ -155,11 +155,7 @@ void	render_scene(void)
 		g_game.score += 0.1;
 	}
 	else if (g_game.mode == MODE_STOP)
-	{
 		render_game_over();
-		if (g_game.score > g_game.high_score)
-			g_game.high_score = g_game.high_score;
-	}
 	else if (g_game.mode == MODE_PAUSE)
 		render_game_paused();
 	glutSwapBuffers();
