@@ -29,6 +29,7 @@ SRCS_NAME = change_size.cpp				\
 			draw_snowman.cpp			\
 			draw_straight.cpp			\
 			change_size.cpp				\
+			health.cpp					\
 			init_glut.cpp				\
 			main.cpp					\
 			pillar.cpp					\

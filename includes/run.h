@@ -203,6 +203,11 @@ void 			draw_short_straight(void);
 */
 void			change_size(int width, int height);
 /*
+** health.cpp
+*/
+void			collide(t_object object);
+void			calc_collision(t_object object);
+/*
 ** init_glut.cpp
 */
 void			init_g_pos(void);
