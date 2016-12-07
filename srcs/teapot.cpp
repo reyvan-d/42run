@@ -15,12 +15,16 @@
 t_object	generate_teapot(void)
 {
 	t_object	teapot;
+	int			tmp;
 
 	bzero(&teapot, sizeof(t_object));
 	teapot.size = 1;
 	teapot.object_type = O_TEAPOT;
 	teapot.eye.ez = RENDER_DIST;
-	teapot.eye.ex = (random_range(1, 3) * 2) - 4;
+	tmp = random_range(1, 3);
+	teapot.eye.ex = (tmp * 2) - 4;
+	teapot.lane = (tmp == 1) ? OL_LEFT : (tmp == 2) ? OL_CENTER : OL_RIGHT;
+	teapot.lane |= OL_BOTTOM;
 	teapot.eye.ey = 0.75;
 	teapot.colour.y = 1;
 	return (teapot);

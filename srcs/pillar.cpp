@@ -15,6 +15,7 @@
 t_object	generate_pillar(void)
 {
 	t_object	pillar;
+	int			tmp;
 
 	ft_bzero(&pillar, sizeof(t_object));
 	pillar.object_type = O_PILLAR;
@@ -31,7 +32,10 @@ t_object	generate_pillar(void)
 		pillar.colour.y = 0.85;
 		pillar.colour.z = 0.85;
 	}
-	pillar.eye.ex = (random_range(1, 3) * 2) - 6;
+	tmp = random_range(1, 3);
+	pillar.eye.ex = (tmp * 2) - 6;
+	pillar.lane = (tmp == 1) ? OL_LEFT : (tmp == 2) ? OL_CENTER : OL_RIGHT;
+	pillar.lane |= OL_TOP | OL_MID | OL_BOTTOM;
 	pillar.eye.ez = RENDER_DIST;
 	return (pillar);
 }

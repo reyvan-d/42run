@@ -15,12 +15,16 @@
 t_object	generate_cube(void)
 {
 	t_object	cube;
+	int			tmp;
 
 	bzero(&cube, sizeof(t_object));
 	cube.object_type = O_CUBE;
 	cube.size = 1;
 	cube.eye.ez = RENDER_DIST;
-	cube.eye.ex = (random_range(-1, 3) * 3) - 6;
+	tmp = random_range(1, 3);
+	cube.eye.ex = (tmp * 3) - 6;
+	cube.lane = (tmp == 1) ? OL_LEFT : (tmp == 2) ? OL_CENTER : OL_RIGHT;
+	cube.lane |= OL_BOTTOM;
 	cube.eye.ey = 0.75;
 	cube.colour.x = 0.5;
 	cube.colour.y = 0.5;

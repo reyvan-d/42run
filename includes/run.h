@@ -57,6 +57,14 @@
 # define O_PILLAR  4
 # define O_LOG     5
 
+# define OL_CENTER 0b00000010
+# define OL_RIGHT  0b00000001
+# define OL_LEFT   0b00000100
+# define OL_TOP    0b00100000
+# define OL_BOTTOM 0b00001000
+# define OL_MID    0b00010000
+# define OL_TRANS  0b10000000
+
 /*
 ** Gameplay
 */
@@ -115,8 +123,9 @@ typedef struct	s_eye
 
 typedef struct	s_object
 {
-	t_eye		eye;
 	char		object_type;
+	char		lane;
+	t_eye		eye;
 	int			size;
 	t_coord		colour;
 }				t_object;
