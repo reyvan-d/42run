@@ -23,8 +23,7 @@ void	collide(t_object object)
 		g_game.health += 0.5;
 		g_game.score += 2;
 	}
-	else
-		g_game.health -= 2.5;
+
 	if (g_game.health > 100)
 		g_game.health = 100;
 	else if (g_game.health <= 0)
@@ -40,19 +39,19 @@ void	calc_collision(t_object object)
 
 	tmp = (g_eye.ex < -1) ? OL_LEFT : (g_eye.ex > 1) ? OL_RIGHT : OL_CENTER;
 	tmp |= (g_eye.ey < 2.4) ? OL_BOTTOM : (g_eye.ey < 6) ? OL_MID : OL_TOP;
-	if ((tmp & OL_LEFT) & object.lane)
+	if ((tmp & OL_LEFT) && (object.lane & OL_LEFT))
 	{
-		if ((tmp & 0b00111000) & object.lane)
+		if ((tmp & OL_BOTTOM) && (object.lane & OL_BOTTOM))
 			collide(object);
 	}
-	else if ((tmp & OL_RIGHT) & object.lane)
+	else if ((tmp & OL_RIGHT) & (object.lane & OL_RIGHT))
 	{
-		if ((tmp & 0b00111000) & object.lane)
+		if ((tmp & OL_BOTTOM) & (object.lane & OL_BOTTOM))
 			collide(object);
 	}
-	else
+	else if ((tmp & OL_CENTER) & (object.lane & OL_CENTER))
 	{
-		if ((tmp & 0b00111000) & object.lane)
+		if ((tmp & OL_BOTTOM) && (object.lane & OL_BOTTOM))
 			collide(object);
 	}
 }
