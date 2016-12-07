@@ -50,17 +50,28 @@ void	render_objects(void)
 	static t_object		objects[20];
 	int					k = 0;
 
-	while (k < 20)
+	if (g_game.mode == MODE_PLAY)
 	{
-		if (objects[k].eye.ez > 0 && objects[k].eye.ez < 3)
-			calc_collision(objects[k]);
-		if ((objects[k].eye.ez < 2) && (g_game.render <= g_game.render_min))
-			generate_object(&objects[k]);
-		else if (objects[k].eye.ez < 2)
-			bzero(&objects[k], sizeof(t_object));
-		else
-			draw_object(&objects[k]);
-		k++;
+		while (k < 20)
+		{
+			if (objects[k].eye.ez > 0 && objects[k].eye.ez < 3)
+				calc_collision(objects[k]);
+			if ((objects[k].eye.ez < 2) && (g_game.render <= g_game.render_min))
+				generate_object(&objects[k]);
+			else if (objects[k].eye.ez < 2)
+				bzero(&objects[k], sizeof(t_object));
+			else
+				draw_object(&objects[k]);
+			k++;
+		}
+		g_game.render--;
 	}
-	g_game.render--;
+	else if (g_game.mode == MODE_STOP)
+	{
+		while (k < 20)
+		{
+			bzero(&objects[k], sizeof(t_object));	
+			k++;
+		}
+	}
 }

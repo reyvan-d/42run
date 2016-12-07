@@ -254,6 +254,8 @@ void			render_scene(void);
 */
 void			render_string(t_coord pos, void *font, char *str);
 void			render_game_stats(void);
+void			render_game_over(void);
+void			render_game_paused(void);
 /*
 ** set_view.cpp
 */
