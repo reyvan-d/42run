@@ -50,13 +50,6 @@ void	render_objects(void)
 	static t_object		objects[20];
 	int					k = 0;
 
-	/*if (objects[0].eye.ez < 2)
-		objects[0] = generate_teapot();
-	draw_teapot(&objects[0]);*/
-	/*if (objects[1].eye.ez < 2)
-		objects[1] = generate_log();
-	draw_log(&objects[1]);*/
-
 	while (k < 20)
 	{
 		if ((objects[k].eye.ez < 2) && (g_game.render <= g_game.render_min))
