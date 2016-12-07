@@ -114,6 +114,7 @@ typedef struct	s_game
 	char		mode;
 	int			time;
 	int			speed;
+	int			render;
 	float		score;
 	float		health;
 }				t_game;
