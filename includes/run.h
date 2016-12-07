@@ -108,10 +108,12 @@ typedef struct	s_object
 
 t_pos			g_pos;
 t_eye			g_eye;
+GLuint			texture;
 # else
 
 extern t_pos	g_pos;
 extern t_eye	g_eye;
+extern GLuint	texture;
 # endif
 
 /*
@@ -119,6 +121,8 @@ extern t_eye	g_eye;
 ** Prototypes |
 ** ----------/
 */
+
+GLuint LoadTextureRAW(const char *filename, int wrap);
 
 /*
 ** change_size.cpp
