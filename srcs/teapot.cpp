@@ -27,6 +27,7 @@ t_object	generate_teapot(void)
 	teapot.lane |= OL_BOTTOM;
 	teapot.eye.ey = 0.75;
 	teapot.colour.y = 1;
+	teapot.weight = -0.5f;
 	return (teapot);
 }
 

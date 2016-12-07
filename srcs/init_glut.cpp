@@ -25,6 +25,7 @@ void	init_g_pos(void)
 	//g_game.render_min = 5;
 	g_win.width = WIN_WIDTH;
 	g_win.height = WIN_HEIGHT;
+	g_eye.ey = 6;
 }
 
 void	init_glut(int ac, char **av)

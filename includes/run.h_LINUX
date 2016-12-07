@@ -127,6 +127,7 @@ typedef struct	s_object
 	char		lane;
 	t_eye		eye;
 	int			size;
+	float		weight;
 	t_coord		colour;
 }				t_object;
 

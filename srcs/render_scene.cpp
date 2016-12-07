@@ -153,31 +153,27 @@ void	draw_walls(void)
 
 void	render_scene(void)
 {
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glLoadIdentity();
+	gluLookAt(
+		0.0 + g_eye.ex, 1.0 + g_eye.ey, 0.0 + g_eye.ez,
+		0.0 + g_eye.ex, 1.0 + g_eye.ey, 1.0 + g_eye.ez,
+		0.0, 2.0, 0.0);
+	if (g_eye.ey > 0 && (g_game.mode == MODE_PLAY || g_game.mode == MODE_STOP))
+		g_eye.ey -= 0.1 * g_game.speed;
+	draw_walls();
 	if (g_game.mode == MODE_PLAY || g_game.mode == MODE_STOP)
-	{
-		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glLoadIdentity();
-		gluLookAt(
-			0.0 + g_eye.ex, 1.0 + g_eye.ey, 0.0 + g_eye.ez,
-			0.0 + g_eye.ex, 1.0 + g_eye.ey, 1.0 + g_eye.ez,
-			0.0, 2.0, 0.0);
-		if (g_eye.ey > 0)
-			g_eye.ey -= 0.2;
-		draw_walls();
 		render_objects();
-		if (g_game.mode == MODE_PLAY)
-		{
-			render_game_stats();
-			g_game.score += 0.1;
-		}
-		else
-		{
-			render_game_over();
-			if (g_game.score > g_game.high_score)
-				g_game.high_score = g_game.high_score;
-		}
+	if (g_game.mode == MODE_PLAY)
+	{
+		render_game_stats();
+		g_game.speed += 0.0002;
+		g_game.score += 0.1;
+		g_game.time += 0.1;
 	}
+	else if (g_game.mode == MODE_STOP)
+		render_game_over();
 	else if (g_game.mode == MODE_PAUSE)
 		render_game_paused();
 	glutSwapBuffers();
