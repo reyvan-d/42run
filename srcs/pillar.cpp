@@ -47,12 +47,12 @@ int			draw_pillar(t_object *pillar)
 		glVertex3f(pillar->eye.ex + 2, 8, pillar->eye.ez);
 		glVertex3f(pillar->eye.ex, 8, pillar->eye.ez);
 		glVertex3f(pillar->eye.ex, 0, pillar->eye.ez);
-		glVertex3f(pillar->eye.ex, 0, pillar->eye.ez + 6);
-		glVertex3f(pillar->eye.ex, 8, pillar->eye.ez + 6);
+		glVertex3f(pillar->eye.ex, 0, pillar->eye.ez + 10);
+		glVertex3f(pillar->eye.ex, 8, pillar->eye.ez + 10);
 		glVertex3f(pillar->eye.ex, 8, pillar->eye.ez);
 		glVertex3f(pillar->eye.ex + 2, 0, pillar->eye.ez);
-		glVertex3f(pillar->eye.ex + 2, 0, pillar->eye.ez + 6);
-		glVertex3f(pillar->eye.ex + 2, 8, pillar->eye.ez + 6);
+		glVertex3f(pillar->eye.ex + 2, 0, pillar->eye.ez + 10);
+		glVertex3f(pillar->eye.ex + 2, 8, pillar->eye.ez + 10);
 		glVertex3f(pillar->eye.ex + 2, 8, pillar->eye.ez);
 	glEnd();
 	glPopMatrix();
