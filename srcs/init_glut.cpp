@@ -17,10 +17,13 @@ void	init_g_pos(void)
 	bzero(&g_pos, sizeof(t_pos));
 	bzero(&g_eye, sizeof(t_eye));
 	bzero(&g_game, sizeof(t_game));
+	bzero(&g_win, sizeof(t_win));
 	g_pos.z = 5.0;
 	g_game.speed = 2;
 	g_game.mode = MODE_PLAY;
 	//g_game.render_min = 5;
+	g_win.width = WIN_WIDTH;
+	g_win.height = WIN_HEIGHT;
 }
 
 void	init_glut(int ac, char **av)
@@ -29,8 +32,8 @@ void	init_glut(int ac, char **av)
 	glutInit(&ac, av);
 	//texture = LoadTextureRAW("./textures/floor.data", TRUE);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
-	glutInitWindowPosition(200, 200);
-	glutInitWindowSize(720, 720);
+	glutInitWindowPosition(WIN_X, WIN_Y);
+	glutInitWindowSize(WIN_WIDTH, WIN_HEIGHT);
 	glutCreateWindow("42run");
 	glutDisplayFunc(render_scene);
 	glutReshapeFunc(change_size);

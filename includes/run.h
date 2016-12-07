@@ -62,6 +62,11 @@
 */
 # define RENDER_DIST  200
 
+# define WIN_WIDTH    720
+# define WIN_HEIGHT   720
+# define WIN_X        200
+# define WIN_Y        200
+
 /*
 ** Gamemode
 */
@@ -116,6 +121,12 @@ typedef struct	s_object
 	t_coord		colour;
 }				t_object;
 
+typedef struct	s_window
+{
+	int			width;
+	int			height;
+}				t_win;
+
 typedef struct	s_game
 {
 	char		mode;
@@ -138,12 +149,14 @@ typedef struct	s_game
 t_pos			g_pos;
 t_eye			g_eye;
 GLuint			texture;
+t_win			g_win;
 t_game			g_game;
 # else
 
 extern t_pos	g_pos;
 extern t_eye	g_eye;
 extern GLuint	texture;
+extern t_win	g_win;
 extern t_game	g_game;
 # endif
 
@@ -222,6 +235,16 @@ void			render_objects(void);
 void			draw_36_snowmen(void);
 void			draw_walls(void);
 void			render_scene(void);
+/*
+** render_string.cpp
+*/
+void			render_string(t_coord pos, void *font, char *str);
+void			render_game_stats(void);
+/*
+** set_view.cpp
+*/
+void			set_orthographic_projection(void);
+void			restore_perspective_projection(void);
 /*
 ** teapot.cpp
 */

@@ -39,6 +39,8 @@ SRCS_NAME = change_size.cpp				\
 			render_log.cpp				\
 			render_objects.cpp			\
 			render_scene.cpp			\
+			render_string.cpp			\
+			set_view.cpp				\
 			teapot.cpp					\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))

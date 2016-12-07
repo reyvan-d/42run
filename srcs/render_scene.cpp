@@ -148,5 +148,7 @@ void	render_scene(void)
 		g_eye.ey -= 0.2;
 	draw_walls();
 	render_objects();
+	render_game_stats();
+	g_game.score += 0.1;
 	glutSwapBuffers();
 }
