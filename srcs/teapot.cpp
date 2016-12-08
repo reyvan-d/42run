@@ -58,7 +58,7 @@ t_object	generate_teapot(void)
 	teapot.object_type = O_TEAPOT;
 	teapot.eye.ez = RENDER_DIST;
 	tmp = random_range(1, 3);
-	teapot.eye.ex = (tmp * 2) - 4;
+	teapot.eye.ex = (tmp * 3) - 6;
 	teapot.lane = (tmp == 1) ? OL_LEFT : (tmp == 2) ? OL_CENTER : OL_RIGHT;
 	teapot.lane |= OL_BOTTOM;
 	gen_teapot_type(&teapot);
@@ -74,7 +74,7 @@ int			draw_teapot(t_object *teapot)
 	glPushMatrix();
 	glColor3f(teapot->colour.x, teapot->colour.y, teapot->colour.z);
 	glTranslatef(teapot->eye.ex, teapot->eye.ey, teapot->eye.ez);
-	glutSolidTeapot(teapot->size);
+	glutSolidTeapot(teapot->size * 0.5);
 	glPopMatrix();
 	teapot->eye.ez -= g_game.speed;
 	return ((teapot->eye.ez == 0) ? 2 : (teapot->eye.ez > 0) ? 1 : 0);

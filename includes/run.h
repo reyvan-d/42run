@@ -149,6 +149,8 @@ typedef struct	s_game
 	float		score;
 	float		health;
 	float		high_score;
+	char		*ability;
+	float		ability_time;
 }				t_game;
 
 /*
