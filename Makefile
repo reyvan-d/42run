@@ -12,9 +12,13 @@
 
 NAME = 42run
 
-CFLAGS =	-std=c++11 -Wno-deprecated-declarations -g -Ofast
+CFLAGS =	-std=c++11 -Wno-deprecated-declarations -g -O3
 
-CFLAGS2 =	-lGLU -lGL -lglut -lXmu -Wno-deprecated-declarations \
+#MAC
+CFLAGS2 = 	-framework OpenGL -framework GLUT -g -O3 -ltermcap \
+			-Wno-deprecated-declarations
+#Linix
+#CFLAGS2 =	-lGLU -lGL -lglut -lXmu -Wno-deprecated-declarations \
 			-g -Ofast -ltermcap
 
 CC = g++
