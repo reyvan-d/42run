@@ -75,6 +75,8 @@
 # define AB_FAST   3
 # define AB_SLOW   4
 
+# define C_SNOWBAL 1
+
 /*
 ** Gameplay
 */
