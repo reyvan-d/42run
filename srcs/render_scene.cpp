@@ -116,7 +116,7 @@ void	draw_walls(void)
 		glTexCoord2d(1, i); glVertex3f(4, 8, -5);
 	glEnd();
 	glDeleteTextures(1, &texture);
-	texture = LoadTextureRAW("./textures/walls.data", 1, 1024, 1024);
+	texture = LoadTextureRAW("./textures/walls.data", 1, 512, 512);
 	glEnable(GL_TEXTURE_2D);
 	glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE );
 	glBindTexture(GL_TEXTURE_2D, texture);
