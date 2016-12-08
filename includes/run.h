@@ -69,6 +69,7 @@
 ** Gameplay
 */
 # define RENDER_DIST  200
+# define NUM_OBJS     20
 
 # define WIN_WIDTH    720
 # define WIN_HEIGHT   720

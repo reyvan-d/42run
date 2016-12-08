@@ -47,12 +47,12 @@ void	draw_object(t_object *object)
 
 void	render_objects(void)
 {
-	static t_object		objects[20];
+	static t_object		objects[NUM_OBJS];
 	int					k = 0;
 
 	if (g_game.mode == MODE_PLAY)
 	{
-		while (k < 20)
+		while (k < NUM_OBJS)
 		{
 			if (objects[k].eye.ez > 0 && objects[k].eye.ez < g_game.speed * 1.5)
 				calc_collision(objects[k]);
@@ -68,7 +68,7 @@ void	render_objects(void)
 	}
 	else if (g_game.mode == MODE_STOP)
 	{
-		while (k < 20)
+		while (k < NUM_OBJS)
 		{
 			bzero(&objects[k], sizeof(t_object));	
 			k++;
