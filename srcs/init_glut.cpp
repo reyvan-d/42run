@@ -22,6 +22,7 @@ void	init_g_pos(void)
 	g_game.speed = 2;
 	g_game.mode = MODE_PLAY;
 	g_game.health = 100;
+	//g_game.ability = "none";
 	//g_game.render_min = 5;
 	g_win.width = WIN_WIDTH;
 	g_win.height = WIN_HEIGHT;

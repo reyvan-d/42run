@@ -29,7 +29,7 @@ t_object	generate_cube(void)
 	cube.colour.x = 0.5;
 	cube.colour.y = 0.5;
 	cube.colour.z = 0.5;
-	cube.weight = 5;
+	cube.weight = 15;
 	return (cube);
 }
 

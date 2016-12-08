@@ -64,11 +64,24 @@
 # define OL_BOTTOM 0b00001000
 # define OL_MID    0b00010000
 # define OL_TRANS  0b10000000
+# define OL_SPEC   0b01000000
+
+/*
+** Ability Defines
+*/
+# define AB_NONE   0
+# define AB_FLY    1
+# define AB_TRANS  2
+# define AB_FAST   3
+# define AB_SLOW   4
+
+# define C_SNOWBAL 1
 
 /*
 ** Gameplay
 */
 # define RENDER_DIST  200
+# define NUM_OBJS     20
 
 # define WIN_WIDTH    720
 # define WIN_HEIGHT   720
@@ -140,13 +153,15 @@ typedef struct	s_window
 typedef struct	s_game
 {
 	char		mode;
-	int			time;
+	float		time;
 	int			speed;
 	int			render;
 	int			render_min;
 	float		score;
 	float		health;
 	float		high_score;
+	char		*ability;
+	float		ability_time;
 }				t_game;
 
 /*
@@ -183,6 +198,10 @@ GLuint LoadTextureRAW(const char *filename, int wrap, int width, int height);
 ** change_size.cpp
 */
 void			change_size(int width, int height);
+/*
+** character.cpp
+*/
+void			render_character(void);
 /*
 ** compute.cpp
 */

@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   random_range.cpp                                   :+:      :+:    :+:   */
+/*   character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/07 06:31:55 by khansman          #+#    #+#             */
-/*   Updated: 2016/12/07 06:31:56 by khansman         ###   ########.fr       */
+/*   Created: 2016/12/08 09:31:27 by khansman          #+#    #+#             */
+/*   Updated: 2016/12/08 09:31:29 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/run.h"
 
-/*
-** Old rand:
-**unsigned int	k;
-**	do
-**	{
-**		k = rand();
-**	} while (k < ((unsigned int)(RAND_MAX) + 1) % (max + 1 - min));
-**	return (k % (max + 1 - min) + min);
-*/
-
-int		random_range(int min, int max)
+void	render_snowball(void)
 {
-	return ((int)rand() % (max - min + 1) + min);
+	glPushMatrix();
+	glColor3f(1, 1, 1);
+	glTranslatef(g_eye.ex, g_eye.ey + 0.5, 2);
+	glutSolidSphere(0.25, 30, 10);
+	glPopMatrix();
+}
+
+void	render_character(void)
+{
+	render_snowball();
 }

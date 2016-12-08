@@ -168,7 +168,7 @@ void	render_scene(void)
 	if (g_game.mode == MODE_PLAY)
 	{
 		render_game_stats();
-		g_game.speed += 0.0002;
+		g_game.speed += 0.002;
 		g_game.score += 0.1;
 		g_game.time += 0.1;
 	}
@@ -176,5 +176,6 @@ void	render_scene(void)
 		render_game_over();
 	else if (g_game.mode == MODE_PAUSE)
 		render_game_paused();
+	render_character();
 	glutSwapBuffers();
 }

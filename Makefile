@@ -12,9 +12,13 @@
 
 NAME = 42run
 
-CFLAGS =	-std=c++11 -Wno-deprecated-declarations -g -Ofast
+CFLAGS =	-std=c++11 -Wno-deprecated-declarations -O3
 
-CFLAGS2 =	-lGLU -lGL -lglut -lXmu -Wno-deprecated-declarations \
+#MAC
+CFLAGS2 = 	-framework OpenGL -framework GLUT -O3 -ltermcap \
+			-Wno-deprecated-declarations
+#Linix
+#CFLAGS2 =	-lGLU -lGL -lglut -lXmu -Wno-deprecated-declarations \
 			-g -Ofast -ltermcap
 
 CC = g++
@@ -24,6 +28,7 @@ INCLUDES_PATH = includes/
 SRCS_PATH = srcs/
 
 SRCS_NAME = change_size.cpp				\
+			character.cpp				\
 			compute.cpp					\
 			draw_box.cpp				\
 			draw_snowman.cpp			\
