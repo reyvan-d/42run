@@ -64,6 +64,7 @@
 # define OL_BOTTOM 0b00001000
 # define OL_MID    0b00010000
 # define OL_TRANS  0b10000000
+# define OL_SPEC   0b01000000
 
 /*
 ** Gameplay
