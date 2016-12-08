@@ -30,6 +30,15 @@ void	press_key(int key, int x, int y)
 {
 	(void)x;
 	(void)y;
+
+	if (g_game.mode == MODE_PAUSE)
+	{
+		if (key == 'p')
+			g_game.mode = MODE_PLAY;
+		else if (key == 27)
+			exit(0);
+		return ;
+	}
 	if (key == GLUT_KEY_RIGHT && g_eye.ex > -2)
 		g_eye.ex -= 3;
 	else if (key == GLUT_KEY_LEFT && g_eye.ex < 2)
@@ -38,9 +47,8 @@ void	press_key(int key, int x, int y)
 		g_eye.ey = 5;
 	else if (key == GLUT_KEY_DOWN)
 		g_eye.ey = 0;
-	else if (key == 'p')
-		g_game.mode = (g_game.mode == MODE_PLAY) ? MODE_PAUSE :
-			(g_game.mode == MODE_PAUSE) ? MODE_PLAY : g_game.mode;
+	else if (key == 'p' && g_game.mode == MODE_PLAY)
+		g_game.mode = MODE_PAUSE;
 	else if (key == 'r' && g_game.mode == MODE_STOP)
 	{
 		g_game.mode = MODE_PLAY;
