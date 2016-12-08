@@ -37,7 +37,7 @@ t_object	generate_pillar(void)
 	pillar.lane = (tmp == 1) ? OL_LEFT : (tmp == 2) ? OL_CENTER : OL_RIGHT;
 	pillar.lane |= OL_TOP | OL_MID | OL_BOTTOM;
 	pillar.eye.ez = RENDER_DIST;
-	pillar.weight = 10;
+	pillar.weight = 30;
 	return (pillar);
 }
 
