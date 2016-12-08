@@ -12,13 +12,17 @@
 
 #include "../includes/run.h"
 
+/*
+** Old rand:
+**unsigned int	k;
+**	do
+**	{
+**		k = rand();
+**	} while (k < ((unsigned int)(RAND_MAX) + 1) % (max + 1 - min));
+**	return (k % (max + 1 - min) + min);
+*/
+
 int		random_range(int min, int max)
 {
-	unsigned int	k;
-
-	do
-	{
-		k = rand();
-	} while (k < ((unsigned int)(RAND_MAX) + 1) % (max + 1 - min));
-	return (k % (max + 1 - min) + min);
+	return ((int)rand() % (max - min + 1) + min);
 }
