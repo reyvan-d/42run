@@ -43,7 +43,7 @@ void	press_key(int key, int x, int y)
 		g_eye.ex -= 3;
 	else if (key == GLUT_KEY_LEFT && g_eye.ex < 2)
 		g_eye.ex += 3;
-	else if (key == GLUT_KEY_UP && g_eye.ey < 0.2)
+	else if ((key == GLUT_KEY_UP || key == 32) && g_eye.ey < 0.2)
 		g_eye.ey = 5;
 	else if (key == GLUT_KEY_DOWN)
 		g_eye.ey = 0;
