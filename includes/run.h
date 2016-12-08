@@ -67,6 +67,15 @@
 # define OL_SPEC   0b01000000
 
 /*
+** Ability Defines
+*/
+# define AB_NONE   0
+# define AB_FLY    1
+# define AB_TRANS  2
+# define AB_FAST   3
+# define AB_SLOW   4
+
+/*
 ** Gameplay
 */
 # define RENDER_DIST  200
