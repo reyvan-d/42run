@@ -72,8 +72,9 @@
 # define AB_NONE   0
 # define AB_FLY    1
 # define AB_TRANS  2
-# define AB_FAST   3
-# define AB_SLOW   4
+# define AB_HEAL   3
+# define AB_FAST   4
+# define AB_SLOW   5
 
 # define C_SNOWBAL 1
 
@@ -160,8 +161,10 @@ typedef struct	s_game
 	float		score;
 	float		health;
 	float		high_score;
-	char		*ability;
+	char		ability;
+	const char	*ability_str;
 	float		ability_time;
+	float		tmp;
 }				t_game;
 
 /*
@@ -194,6 +197,12 @@ extern t_game	g_game;
 
 GLuint LoadTextureRAW(const char *filename, int wrap, int width, int height);
 
+/*
+** abilities.cpp 
+*/
+void			activate_ability(char ability);
+void			ability_clear(void);
+void			ability_do(void);
 /*
 ** change_size.cpp
 */

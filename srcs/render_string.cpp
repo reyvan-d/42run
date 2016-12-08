@@ -61,7 +61,7 @@ void	render_game_stats(void)
 		sprintf(tmp, "High Score: %.2f", g_game.high_score);
 		renderBitmapString(5, 90, 0, GLUT_BITMAP_HELVETICA_18, tmp);
 	}
-	sprintf(tmp, "Ability : %s", (g_game.ability == NULL) ? "none" : g_game.ability);
+	sprintf(tmp, "Ability : %s", (g_game.ability_str == NULL) ? "none" : g_game.ability_str);
 	renderBitmapString(5, g_win.height - 15, 0, GLUT_BITMAP_HELVETICA_18, tmp);
 	glPopMatrix();
 

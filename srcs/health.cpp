@@ -14,11 +14,14 @@
 
 void	collide(t_object object)
 {
-	g_game.health -= object.weight;
+	if (g_game.ability != AB_TRANS)
+		g_game.health -= object.weight;
 	g_game.score -= object.weight / 10;
 	if (object.object_type == O_TEAPOT)
 		g_game.score -= (g_game.health > 99.0f) ? 20 * object.weight : 4 * object.weight;
 
+	if (object.lane == OL_SPEC)
+		activate_ability((char)random_range(1, 3));
 
 	if (g_game.health > 100)
 		g_game.health = 100;
