@@ -22,7 +22,7 @@ t_object	generate_cube(void)
 	cube.size = 1;
 	cube.eye.ez = RENDER_DIST;
 	tmp = random_range(1, 3);
-	cube.eye.ex = (tmp * 3) - 6;
+	cube.eye.ex = (tmp * 1.5) - 3;
 	cube.lane = (tmp == 1) ? OL_LEFT : (tmp == 2) ? OL_CENTER : OL_RIGHT;
 	cube.lane |= OL_BOTTOM;
 	cube.colour.x = 1;
