@@ -28,6 +28,7 @@ INCLUDES_PATH = includes/
 SRCS_PATH = srcs/
 
 SRCS_NAME = change_size.cpp				\
+			character.cpp				\
 			compute.cpp					\
 			draw_box.cpp				\
 			draw_snowman.cpp			\

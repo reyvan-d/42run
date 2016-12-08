@@ -197,6 +197,10 @@ GLuint LoadTextureRAW(const char *filename, int wrap, int width, int height);
 */
 void			change_size(int width, int height);
 /*
+** character.cpp
+*/
+void			render_character(void);
+/*
 ** compute.cpp
 */
 void			compute_pos(float delta_move);

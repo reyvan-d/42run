@@ -176,5 +176,6 @@ void	render_scene(void)
 		render_game_over();
 	else if (g_game.mode == MODE_PAUSE)
 		render_game_paused();
+	render_character();
 	glutSwapBuffers();
 }
