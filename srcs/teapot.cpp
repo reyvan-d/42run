@@ -29,7 +29,7 @@ static void	gen_teapot_type(t_object *teapot)
 		teapot->colour.x = 0.2578125;
 		teapot->colour.y = 0.8828125;
 		teapot->colour.z = 0.953125;
-		teapot->weight = 1;
+		teapot->weight = -1;
 	}
 	else if (tmp > 85)
 	{
