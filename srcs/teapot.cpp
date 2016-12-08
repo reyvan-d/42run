@@ -19,7 +19,7 @@ static void	gen_teapot_type(t_object *teapot)
 	tmp = random_range(1, 100);
 	if (tmp == 1)
 	{
-		teapot->weight = -25;
+		teapot->weight = -20;
 		teapot->colour.x = 0.953125;
 		teapot->colour.y = 0.74609375;
 		teapot->colour.z = 0.2578125;

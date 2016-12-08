@@ -142,7 +142,7 @@ typedef struct	s_window
 typedef struct	s_game
 {
 	char		mode;
-	int			time;
+	float		time;
 	int			speed;
 	int			render;
 	int			render_min;

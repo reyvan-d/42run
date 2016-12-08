@@ -54,10 +54,12 @@ void	render_game_stats(void)
 	renderBitmapString(5, 30, 0, GLUT_BITMAP_HELVETICA_18, tmp);
 	sprintf(tmp, "Health: %.2f%%", g_game.health);
 	renderBitmapString(5, 50, 0, GLUT_BITMAP_HELVETICA_18, tmp);
+	sprintf(tmp, "Distance: %.2fm", g_game.time);
+	renderBitmapString(5, 70, 0, GLUT_BITMAP_HELVETICA_18, tmp);
 	if (g_game.high_score > 0)
 	{
 		sprintf(tmp, "High Score: %.2f", g_game.high_score);
-		renderBitmapString(5, 70, 0, GLUT_BITMAP_HELVETICA_18, tmp);
+		renderBitmapString(5, 90, 0, GLUT_BITMAP_HELVETICA_18, tmp);
 	}
 	glPopMatrix();
 
