@@ -46,21 +46,29 @@ int			draw_pillar(t_object *pillar)
 	if (pillar->object_type != O_PILLAR)
 		return (-1);
 	glPushMatrix();
+	texture = LoadTextureRAW("./textures/column.data", 1, 128, 512);
+	glEnable(GL_TEXTURE_2D);
+	glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE );
+	glBindTexture(GL_TEXTURE_2D, texture);
 	glColor3f(pillar->colour.x, pillar->colour.y, pillar->colour.z);
 	glBegin(GL_QUADS);
-		glVertex3f(pillar->eye.ex - 1, 0, pillar->eye.ez);
-		glVertex3f(pillar->eye.ex + 1, 0, pillar->eye.ez);
-		glVertex3f(pillar->eye.ex + 1, 8, pillar->eye.ez);
-		glVertex3f(pillar->eye.ex - 1, 8, pillar->eye.ez);
-		glVertex3f(pillar->eye.ex - 1, 0, pillar->eye.ez);
-		glVertex3f(pillar->eye.ex - 1, 0, pillar->eye.ez + 10);
-		glVertex3f(pillar->eye.ex - 1, 8, pillar->eye.ez + 10);
-		glVertex3f(pillar->eye.ex - 1, 8, pillar->eye.ez);
-		glVertex3f(pillar->eye.ex + 1, 0, pillar->eye.ez);
-		glVertex3f(pillar->eye.ex + 1, 0, pillar->eye.ez + 10);
-		glVertex3f(pillar->eye.ex + 1, 8, pillar->eye.ez + 10);
-		glVertex3f(pillar->eye.ex + 1, 8, pillar->eye.ez);
+		glTexCoord2d(0, 0); glVertex3f(pillar->eye.ex - 1, 0, pillar->eye.ez);
+		glTexCoord2d(1, 0); glVertex3f(pillar->eye.ex + 1, 0, pillar->eye.ez);
+		glTexCoord2d(1, 1); glVertex3f(pillar->eye.ex + 1, 8, pillar->eye.ez);
+		glTexCoord2d(0, 1); glVertex3f(pillar->eye.ex - 1, 8, pillar->eye.ez);
+
+		glTexCoord2d(0, 1); glVertex3f(pillar->eye.ex - 1, 0, pillar->eye.ez);
+		glTexCoord2d(0, 0); glVertex3f(pillar->eye.ex - 1, 0, pillar->eye.ez + 10);
+		glTexCoord2d(1, 1); glVertex3f(pillar->eye.ex - 1, 8, pillar->eye.ez + 10);
+		glTexCoord2d(1, 0); glVertex3f(pillar->eye.ex - 1, 8, pillar->eye.ez);
+		
+		glTexCoord2d(0, 1); glVertex3f(pillar->eye.ex + 1, 0, pillar->eye.ez);
+		glTexCoord2d(0, 0); glVertex3f(pillar->eye.ex + 1, 0, pillar->eye.ez + 10);
+		glTexCoord2d(1, 1); glVertex3f(pillar->eye.ex + 1, 8, pillar->eye.ez + 10);
+		glTexCoord2d(1, 0); glVertex3f(pillar->eye.ex + 1, 8, pillar->eye.ez);
 	glEnd();
+	glDeleteTextures(1, &texture);
+	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
 	pillar->eye.ez -= g_game.speed;
 	return ((pillar->eye.ez == 0) ? 2 : (pillar->eye.ez > 0) ? 1 : 0);

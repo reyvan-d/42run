@@ -18,6 +18,7 @@ GLuint LoadTextureRAW(const char *filename, int wrap, int width, int height)
     FILE			*file;
 
     // open texture data
+	bzero(&texture, sizeof(GLuint));
     file = fopen( filename, "rb" );
     if (file == NULL)
 	{
@@ -55,10 +56,10 @@ GLuint LoadTextureRAW(const char *filename, int wrap, int width, int height)
 
 //	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 
-	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrap ? GL_REPEAT : GL_CLAMP );
-	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrap ? GL_REPEAT : GL_CLAMP );
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrap ? GL_REPEAT : GL_CLAMP_TO_EDGE );
+	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrap ? GL_REPEAT : GL_CLAMP_TO_EDGE );
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 
     // build our texture mipmaps
@@ -116,12 +117,14 @@ void	draw_walls(void)
 		glTexCoord2d(1, i); glVertex3f(4, 8, -5);
 	glEnd();
 	glDeleteTextures(1, &texture);
+	glDisable(GL_TEXTURE_2D);
 	texture = LoadTextureRAW("./textures/walls.data", 1, 512, 512);
 	glEnable(GL_TEXTURE_2D);
 	glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE );
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glBegin(GL_QUADS);
-		glColor3f(0.85546875, 0.2578125, 0.1796875);/*Walls*/
+		//glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		glColor3f(0.5098039216, 0.0039215686, 0.0039215686);/*Walls*/
 		glTexCoord2d(0, i); glVertex3f(-4, 0, -5);
 		glTexCoord2d(0, i + 1); glVertex3f(-4, 0, 100);
 		glTexCoord2d(1, i + 1); glVertex3f(-4, 8, 100);
@@ -135,7 +138,7 @@ void	draw_walls(void)
 	glDisable(GL_TEXTURE_2D);
 	if (i == 1)
 		i = 0;
-	else
+	if (g_game.mode == MODE_PLAY)
 		i += 0.02f;
 }
 

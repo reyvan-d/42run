@@ -12,6 +12,9 @@
 
 #include "../includes/run.h"
 
+GLfloat light_diffuse[] = {1.0, 1.0, 1.0, 1.0};  /* Red diffuse light. */
+GLfloat light_position[] = {0.0, 5.0, 5.0, 7.0};  /* Infinite light location. */
+
 void	init_g_pos(void)
 {
 	bzero(&g_pos, sizeof(t_pos));
@@ -38,6 +41,12 @@ void	init_glut(int ac, char **av)
 	glutInitWindowPosition(WIN_X, WIN_Y);
 	glutInitWindowSize(WIN_WIDTH, WIN_HEIGHT);
 	glutCreateWindow("42run");
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_COLOR_MATERIAL);
 	glutDisplayFunc(render_scene);
 	glutReshapeFunc(change_size);
 	glutIdleFunc(render_scene);
