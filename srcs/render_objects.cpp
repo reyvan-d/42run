@@ -55,7 +55,10 @@ void	render_objects(void)
 		while (k < NUM_OBJS)
 		{
 			if (objects[k].eye.ez > 0 && objects[k].eye.ez < g_game.speed * 1.5)
+			{
 				calc_collision(objects[k]);
+				objects[k].eye.ez = 0;
+			}
 			if ((objects[k].eye.ez < 2) && (g_game.render <= g_game.render_min))
 				generate_object(&objects[k]);
 			else if (objects[k].eye.ez < 2)
