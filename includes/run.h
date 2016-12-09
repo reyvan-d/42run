@@ -177,14 +177,14 @@ typedef struct	s_game
 
 t_pos			g_pos;
 t_eye			g_eye;
-GLuint			texture;
+GLuint			*textures;
 t_win			g_win;
 t_game			g_game;
 # else
 
 extern t_pos	g_pos;
 extern t_eye	g_eye;
-extern GLuint	texture;
+extern GLuint	*textures;
 extern t_win	g_win;
 extern t_game	g_game;
 # endif
@@ -195,7 +195,7 @@ extern t_game	g_game;
 ** ----------/
 */
 
-GLuint LoadTextureRAW(const char *filename, int wrap, int width, int height);
+void LoadTextureRAW(GLuint texture, const char *filename, int wrap, int width, int height);
 
 /*
 ** abilities.cpp 

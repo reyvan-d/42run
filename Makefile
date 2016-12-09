@@ -18,8 +18,8 @@ CFLAGS =	-std=c++11 -Wno-deprecated-declarations -O3
 #CFLAGS2 = 	-framework OpenGL -framework GLUT -O3 -ltermcap \
 			-Wno-deprecated-declarations
 #Linix
-CFLAGS2 =	-lGLU -lGL -lglut -lXmu -Wno-deprecated-declarations \
-			-g -Ofast -ltermcap
+CFLAGS2 =	-lGLU -lGL -lglut -Wno-deprecated-declarations \
+			-O3 -ltermcap
 
 CC = g++
 

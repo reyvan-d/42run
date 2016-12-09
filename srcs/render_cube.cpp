@@ -39,9 +39,8 @@ int			draw_cube(t_object *cube)
 	glPushMatrix();
 	glColor3f(cube->colour.x, cube->colour.y, cube->colour.z);
 	glTranslatef(cube->eye.ex, cube->eye.ey, cube->eye.ez);
-	texture = LoadTextureRAW("./textures/apple.data", 0, 256, 256);
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, texture);
+	glBindTexture(GL_TEXTURE_2D, textures[5]);
 	glBegin(GL_QUADS);
 		glTexCoord2d(0, 0); glVertex3f((cube->eye.ex - 0.5), 0, (cube->eye.ez));
 		glTexCoord2d(0, 1); glVertex3f((cube->eye.ex - 0.5), 1, (cube->eye.ez));
@@ -63,10 +62,10 @@ int			draw_cube(t_object *cube)
 		glTexCoord2d(1, 1); glVertex3f((cube->eye.ex + 0.5), 1, (cube->eye.ez + 1));
 		glTexCoord2d(1, 0); glVertex3f((cube->eye.ex + 0.5), 1, (cube->eye.ez));
 	glEnd();
-	glDeleteTextures(1, &texture);
+	glBindTexture(GL_TEXTURE_2D, 0);
 	glDisable(GL_TEXTURE_2D);
 	//glutSolidCube(cube->size);
 	glPopMatrix();
-	cube->eye.ez -= g_game.speed;
+	cube->eye.ez -= g_game.speed - 1;
 	return ((cube->eye.ez == 0) ? 2 : (cube->eye.ez > 0) ? 1 : 0);
 }

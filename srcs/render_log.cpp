@@ -34,11 +34,11 @@ int			draw_log(t_object *log)
 	if (log->object_type != O_LOG)
 		return (-1);
 	glPushMatrix();
-	texture = LoadTextureRAW("./textures/table.data", 1, 512, 128);
+	glActiveTexture(textures[4]);
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, texture);
-	glColor3f(log->colour.x, log->colour.y, log->colour.z);
+	glBindTexture(GL_TEXTURE_2D, textures[4]);
 	glBegin(GL_QUADS);
+		glColor3f(log->colour.x, log->colour.y, log->colour.z);
 		glTexCoord2d(0, 0); glVertex3f(-4, 0, log->eye.ez);
 		glTexCoord2d(0, 1);glVertex3f(-4, log->eye.ey, log->eye.ez);
 		glTexCoord2d(1, 1);glVertex3f(4, log->eye.ey, log->eye.ez);
@@ -48,7 +48,7 @@ int			draw_log(t_object *log)
 		glTexCoord2d(1, 1);glVertex3f(4, log->eye.ey, log->eye.ez + 3);
 		glTexCoord2d(1, 0);glVertex3f(4, log->eye.ey, log->eye.ez);
 	glEnd();
-	glDeleteTextures(1, &texture);
+	glBindTexture(GL_TEXTURE_2D, 0);
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
 	log->eye.ez -= g_game.speed;

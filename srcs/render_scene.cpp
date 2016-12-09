@@ -12,31 +12,24 @@
 
 #include "../includes/run.h"
 
-GLuint LoadTextureRAW(const char *filename, int wrap, int width, int height)
+void LoadTextureRAW(GLuint texture, const char *filename, int wrap, int width, int height)
 {
 	unsigned char	*data;
     FILE			*file;
 
     // open texture data
-	bzero(&texture, sizeof(GLuint));
     file = fopen( filename, "rb" );
     if (file == NULL)
 	{
-		return (0);
+		return ;
 	}
 
     // allocate buffer
-    data = (unsigned char *)malloc( width * height * 3 );
+    data = (unsigned char *)malloc(width * height * 4);
 
     // read texture data
-    fread(data, width * height * 3, 1, file);
+    fread(data, width * height * 4, 1, file);
     fclose(file);
-
-    // allocate a texture name
-    glGenTextures( 1, &texture );
-
-    // select our current texture
-    glBindTexture( GL_TEXTURE_2D, texture );
 
     // select modulate to mix texture with color for shading
 //    glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE );
@@ -54,20 +47,18 @@ GLuint LoadTextureRAW(const char *filename, int wrap, int width, int height)
 //    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
 //                     wrap ? GL_REPEAT : GL_CLAMP );
 
-//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-
-	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrap ? GL_REPEAT : GL_CLAMP_TO_EDGE );
-	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrap ? GL_REPEAT : GL_CLAMP_TO_EDGE );
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrap ? GL_REPEAT : GL_CLAMP);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrap ? GL_REPEAT : GL_CLAMP_TO_EDGE);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 
     // build our texture mipmaps
-    gluBuild2DMipmaps(GL_TEXTURE_2D, 3, width, height, GL_RGBA, GL_UNSIGNED_BYTE, data);
+	gluBuild2DMipmaps(GL_TEXTURE_2D, 3, width, height, GL_RGBA, GL_UNSIGNED_BYTE, data);
 	// free buffer
     free(data);
-
-    return texture;
 }
 
 void	draw_36_snowmen(void)
@@ -92,49 +83,46 @@ void	draw_36_snowmen(void)
 void	draw_walls(void)
 {
 	static float	i;
-	texture = LoadTextureRAW("./textures/floor.data", 1, 256, 256);
+
 	glEnable(GL_TEXTURE_2D);
-	glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE );
-	glBindTexture(GL_TEXTURE_2D, texture);
+	glBindTexture(GL_TEXTURE_2D, textures[0]);
 	glBegin(GL_QUADS);/*Draw the ground*/
-		glColor3f(0.281176, 0.25098, 0.082353);/*Floor*/
+		glColor3f(0.581176, 0.55098, 0.282353);/*Floor*/
 		glTexCoord2d(0, i); glVertex3f(-4, 0, -5);
 		glTexCoord2d(0, i + 1); glVertex3f(-4, 0, 100);
 		glTexCoord2d(1, i + 1); glVertex3f(4, 0, 100);
 		glTexCoord2d(1, i); glVertex3f(4, 0, -5);
 	glEnd();
-	glDeleteTextures(1, &texture);
-		glDisable(GL_TEXTURE_2D);
-		texture = LoadTextureRAW("./textures/wires.data", 1, 512, 512);
-	glEnable(GL_TEXTURE_2D);
-	glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE );
-	glBindTexture(GL_TEXTURE_2D, texture);
-	glBegin(GL_QUADS);
-		glColor3f(0.2, 0.2, 0.2);/*Roof*/
-		glTexCoord2d(0, i); glVertex3f(-4, 8, -5);
-		glTexCoord2d(0, i + 1); glVertex3f(-4, 8, 100);
-		glTexCoord2d(1, i + 1); glVertex3f(4, 8, 100);
-		glTexCoord2d(1, i); glVertex3f(4, 8, -5);
-	glEnd();
-	glDeleteTextures(1, &texture);
+	glBindTexture(GL_TEXTURE_2D, 0);
 	glDisable(GL_TEXTURE_2D);
-	texture = LoadTextureRAW("./textures/walls.data", 1, 512, 512);
+
 	glEnable(GL_TEXTURE_2D);
-	glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE );
-	glBindTexture(GL_TEXTURE_2D, texture);
+	glBindTexture(GL_TEXTURE_2D, textures[1]);
 	glBegin(GL_QUADS);
-		//glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-		glColor3f(0.5098039216, 0.0039215686, 0.0039215686);/*Walls*/
+		glColor3f(0.5098039216, 0.3039215686, 0.3039215686);/*Walls*/
 		glTexCoord2d(0, i); glVertex3f(-4, 0, -5);
 		glTexCoord2d(0, i + 1); glVertex3f(-4, 0, 100);
 		glTexCoord2d(1, i + 1); glVertex3f(-4, 8, 100);
 		glTexCoord2d(1, i); glVertex3f(-4, 8, -5);
+
 		glTexCoord2d(0, i); glVertex3f(4, 0, -5);
 		glTexCoord2d(0, i + 1); glVertex3f(4, 0, 100);
 		glTexCoord2d(1, i + 1); glVertex3f(4, 8, 100);
 		glTexCoord2d(1, i); glVertex3f(4, 8, -5);
 	glEnd();
-	glDeleteTextures(1, &texture);
+	glBindTexture(GL_TEXTURE_2D, 0);
+	glDisable(GL_TEXTURE_2D);
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, textures[2]);
+	glBegin(GL_QUADS);
+		glColor3f(0.3, 0.3, 0.3);/*Roof*/
+		glTexCoord2d(0, i); glVertex3f(-4, 8, -5);
+		glTexCoord2d(0, i + 1); glVertex3f(-4, 8, 100);
+		glTexCoord2d(1, i + 1); glVertex3f(4, 8, 100);
+		glTexCoord2d(1, i); glVertex3f(4, 8, -5);
+	glEnd();
+	glBindTexture(GL_TEXTURE_2D, 0);
 	glDisable(GL_TEXTURE_2D);
 	if (i == 1)
 		i = 0;

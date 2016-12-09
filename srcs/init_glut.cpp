@@ -37,7 +37,7 @@ void	init_glut(int ac, char **av)
 	init_g_pos();
 	glutInit(&ac, av);
 	//texture = LoadTextureRAW("./textures/floor.data", TRUE);
-	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
+	glutInitDisplayMode(GLUT_DEPTH | GLUT_MULTISAMPLE | GLUT_RGBA | GLUT_DOUBLE);
 	glutInitWindowPosition(WIN_X, WIN_Y);
 	glutInitWindowSize(WIN_WIDTH, WIN_HEIGHT);
 	glutCreateWindow("42run");
@@ -45,8 +45,16 @@ void	init_glut(int ac, char **av)
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_LIGHTING);
-	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_COLOR_MATERIAL);
+	textures = new GLuint[6];
+//	textures = (GLuint *)malloc(sizeof(GLuint) * 6);
+	glGenTextures(6, textures);
+	LoadTextureRAW(textures[0], "./textures/floor.data", 1, 256, 256);
+	LoadTextureRAW(textures[1], "./textures/walls.data", 1, 512, 512);
+	LoadTextureRAW(textures[2], "./textures/wires.data", 1, 512, 512);
+	LoadTextureRAW(textures[3], "./textures/column.data", 1, 128, 512);
+	LoadTextureRAW(textures[4], "./textures/table.data", 1, 512, 128);
+	LoadTextureRAW(textures[5], "./textures/apple.data", 1, 128, 128);
 	glutDisplayFunc(render_scene);
 	glutReshapeFunc(change_size);
 	glutIdleFunc(render_scene);
