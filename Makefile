@@ -156,7 +156,7 @@ submodule:
 	git submodule sync -- libft
 
 texture:
-	@if [ ! -f textures ]; then \
+	@if [ ! -d textures ]; then \
 		git submodule add https://github.com/GabrielPora/42run_Textures.git textures; \
 	fi
 
