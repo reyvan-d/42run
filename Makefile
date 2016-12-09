@@ -70,7 +70,7 @@ INCLUDES = -I includes/ -I libft/includes -I /usr/X11/include
 
 HEADER = 	$(INCLUDES_PATH)run.h		\
 
-all: qme odir $(NAME)
+all: qme odir texture $(NAME)
 
 define colourecho
 	@tput setaf 14
@@ -155,10 +155,8 @@ submodule:
 	git submodule sync -- libft
 
 texture:
-	@if [ ! -f author ]; then \
+	@if [ ! -f textures ]; then \
 		git submodule add https://github.com/GabrielPora/42run_Textures.git textures; \
-		git submodule init textures; \
-		git submodule update; \ 
 	fi
 
 .PHONY: clean fclean re odir
