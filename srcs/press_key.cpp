@@ -28,6 +28,7 @@
 
 void	press_key(int key, int x, int y)
 {
+	static int	screenstatus;
 	(void)x;
 	(void)y;
 
@@ -60,4 +61,15 @@ void	press_key(int key, int x, int y)
 	}
 	else if (key == 27)
 		exit_prog();
+	else if (key == 98)
+	{
+		if (++screenstatus == 1)
+			glutFullScreen();
+		else
+		{
+			glutReshapeWindow(WIN_WIDTH, WIN_HEIGHT);
+        	glutPositionWindow(WIN_X, WIN_Y);
+        	screenstatus = 0;
+		}
+	}
 }
