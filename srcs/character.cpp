@@ -31,7 +31,8 @@ void	render_snowball(void)
 	glDisable(GL_TEXTURE_2D);
 
 	glPopMatrix();
-	k += 30;
+	if (g_game.mode == MODE_PLAY)
+		k += 30;
 	if (k > 360)
 		k = 0;
 }
