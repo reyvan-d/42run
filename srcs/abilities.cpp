@@ -18,31 +18,31 @@ void	activate_ability(char ability)
 	{
 		g_game.ability = AB_FLY;
 		g_game.ability_str = "fly";
-		g_game.ability_time = 10;
+		g_game.ability_time = (float)random_range(7, 20);
 	}
 	else if (ability == AB_FAST)
 	{
 		g_game.ability = AB_FAST;
 		g_game.ability_str = "fast";
-		g_game.ability_time = 10;
+		g_game.ability_time = (float)random_range(7, 20);
 	}
 	else if (ability == AB_SLOW)
 	{
 		g_game.ability = AB_SLOW;
 		g_game.ability_str = "slow";
-		g_game.ability_time = 10;
+		g_game.ability_time = (float)random_range(7, 20);
 	}
 	else if (ability == AB_TRANS)
 	{
 		g_game.ability = AB_TRANS;
 		g_game.ability_str = "transparent";
-		g_game.ability_time = 10; 
+		g_game.ability_time = (float)random_range(7, 20); 
 	}
 	else if (ability == AB_HEAL)
 	{
 		g_game.ability = AB_HEAL;
 		g_game.ability_str = "heal";
-		g_game.ability_time = 10; 
+		g_game.ability_time = (float)random_range(7, 20); 
 	}
 }
 
