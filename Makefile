@@ -154,4 +154,11 @@ submodule:
 	git submodule update
 	git submodule sync -- libft
 
+texture:
+	@if [ ! -f author ]; then \
+		git submodule add https://github.com/GabrielPora/42run_Textures.git textures; \
+		git submodule init textures; \
+		git submodule update; \ 
+	fi
+
 .PHONY: clean fclean re odir
