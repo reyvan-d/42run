@@ -23,6 +23,7 @@ static void	gen_teapot_type(t_object *teapot)
 		teapot->colour.x = 0.953125;
 		teapot->colour.y = 0.74609375;
 		teapot->colour.z = 0.2578125;
+		teapot->lane |= OL_SPEC;
 	}
 	else if (tmp > 90)
 	{
