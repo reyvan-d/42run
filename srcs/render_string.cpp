@@ -52,22 +52,22 @@ void	render_game_stats(void)
 	glLoadIdentity();
 	glColor3f(2, 2, 2);
 	sprintf(tmp, "Score: %.2f", g_game.score);
-	renderBitmapString(5, 30, 0, GLUT_BITMAP_HELVETICA_18, tmp);
+	renderBitmapString(7, 30, 0, GLUT_BITMAP_HELVETICA_18, tmp);
 	sprintf(tmp, "Health: %.2f%%", g_game.health);
-	renderBitmapString(5, 50, 0, GLUT_BITMAP_HELVETICA_18, tmp);
+	renderBitmapString(7, 50, 0, GLUT_BITMAP_HELVETICA_18, tmp);
 	sprintf(tmp, "Distance: %.2fm", g_game.time);
-	renderBitmapString(5, 70, 0, GLUT_BITMAP_HELVETICA_18, tmp);
+	renderBitmapString(7, 70, 0, GLUT_BITMAP_HELVETICA_18, tmp);
 	if (g_game.high_score > 0)
 	{
 		sprintf(tmp, "High Score: %.2f", g_game.high_score);
-		renderBitmapString(5, 90, 0, GLUT_BITMAP_HELVETICA_18, tmp);
+		renderBitmapString(7, 90, 0, GLUT_BITMAP_HELVETICA_18, tmp);
 	}
 	sprintf(tmp, "Ability : %s", (g_game.ability_str == NULL) ? "none" : g_game.ability_str);
-	renderBitmapString(5, g_win.height - 15, 0, GLUT_BITMAP_HELVETICA_18, tmp);
+	renderBitmapString(7, g_win.height - 15, 0, GLUT_BITMAP_HELVETICA_18, tmp);
 	if (g_game.ability_time > 0)
 	{
 		sprintf(tmp, "Ability time: %0.2f", g_game.ability_time);
-		renderBitmapString(5, g_win.height - 35, 0, GLUT_BITMAP_HELVETICA_18, tmp);
+		renderBitmapString(7, g_win.height - 35, 0, GLUT_BITMAP_HELVETICA_18, tmp);
 	}
 	glPopMatrix();
 	glEnable(GL_LIGHTING);
