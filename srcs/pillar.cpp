@@ -17,7 +17,7 @@ t_object	generate_pillar(void)
 	t_object	pillar;
 	int			tmp;
 
-	ft_bzero(&pillar, sizeof(t_object));
+	bzero(&pillar, sizeof(t_object));
 	pillar.object_type = O_PILLAR;
 	pillar.size = 1;
 	if (random_range(1, 2) == 1)

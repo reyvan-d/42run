@@ -39,8 +39,6 @@
 #include <iostream>
 #include <random>
 
-# include "../libft/includes/libft.h"
-
 /*
 ** ----------\
 ** Defines    |

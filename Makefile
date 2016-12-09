@@ -6,7 +6,7 @@
 #    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/28 11:16:22 by ggroener          #+#    #+#              #
-#    Updated: 2016/10/08 10:32:05 by khansman         ###   ########.fr        #
+#    Updated: 2016/12/09 16:35:20 by smahomed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,7 @@ OBJS = $(addprefix $(OBJS_PATH), $(OBJS_NAME))
 #INCLUDES = -I includes/ -I libft/includes
 
 #uncomment these to work on Linux and comment to work on Mac.
-LIBRARY = -L /usr/X11/lib -lmlx -lX11 -lm -lXext -L libft/ -lft
+LIBRARY = -L /usr/X11/lib -lmlx -lX11 -lm -lXext
  
 INCLUDES = -I includes/ -I libft/includes -I /usr/X11/include
 
@@ -86,7 +86,6 @@ define colourecho2
 endef
 
 $(NAME): $(OBJS)
-	@make -C libft
 	@$(call colourecho, " - Making $(NAME)")
 	@clear
 	@$(CC) $(CFLAGS2) -o $(NAME) $^ $(LIBRARY) $(INCLUDES) -I$(INCLUDES_PATH)
@@ -102,13 +101,11 @@ odir:
 	@mkdir -p $(OBJS_PATH)
 
 clean:
-	@make clean -C libft
 	@$(call colourecho, " - Clearing object files")
 	@rm -f $(OBJS)
 	@$(call colourecho, "clean done!")
 
 fclean: clean
-	@make fclean -C libft
 	@$(call colourecho, "Clearing executable files")
 	@rm -f $(NAME)
 	@$(call colourecho, "fclean done")
