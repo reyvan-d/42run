@@ -50,7 +50,7 @@ void	render_game_stats(void)
 	glDisable(GL_LIGHTING);
 	glPushMatrix();
 	glLoadIdentity();
-	glColor3f(1, 1, 1);
+	glColor3f(2, 2, 2);
 	sprintf(tmp, "Score: %.2f", g_game.score);
 	renderBitmapString(5, 30, 0, GLUT_BITMAP_HELVETICA_18, tmp);
 	sprintf(tmp, "Health: %.2f%%", g_game.health);

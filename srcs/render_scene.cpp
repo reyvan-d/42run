@@ -89,8 +89,8 @@ void	draw_walls(void)
 	glBegin(GL_QUADS);/*Draw the ground*/
 		glColor3f(0.581176, 0.55098, 0.282353);/*Floor*/
 		glTexCoord2d(0, i); glVertex3f(-4, 0, -5);
-		glTexCoord2d(0, i + 1); glVertex3f(-4, 0, 100);
-		glTexCoord2d(1, i + 1); glVertex3f(4, 0, 100);
+		glTexCoord2d(0, i + 1); glVertex3f(-4, 0, 200);
+		glTexCoord2d(1, i + 1); glVertex3f(4, 0, 200);
 		glTexCoord2d(1, i); glVertex3f(4, 0, -5);
 	glEnd();
 	glBindTexture(GL_TEXTURE_2D, 0);
@@ -101,13 +101,13 @@ void	draw_walls(void)
 	glBegin(GL_QUADS);
 		glColor3f(0.5098039216, 0.3039215686, 0.3039215686);/*Walls*/
 		glTexCoord2d(0, i); glVertex3f(-4, 0, -5);
-		glTexCoord2d(0, i + 1); glVertex3f(-4, 0, 100);
-		glTexCoord2d(1, i + 1); glVertex3f(-4, 8, 100);
+		glTexCoord2d(0, i + 1); glVertex3f(-4, 0, 200);
+		glTexCoord2d(1, i + 1); glVertex3f(-4, 8, 200);
 		glTexCoord2d(1, i); glVertex3f(-4, 8, -5);
 
 		glTexCoord2d(0, i); glVertex3f(4, 0, -5);
-		glTexCoord2d(0, i + 1); glVertex3f(4, 0, 100);
-		glTexCoord2d(1, i + 1); glVertex3f(4, 8, 100);
+		glTexCoord2d(0, i + 1); glVertex3f(4, 0, 200);
+		glTexCoord2d(1, i + 1); glVertex3f(4, 8, 200);
 		glTexCoord2d(1, i); glVertex3f(4, 8, -5);
 	glEnd();
 	glBindTexture(GL_TEXTURE_2D, 0);
@@ -118,8 +118,8 @@ void	draw_walls(void)
 	glBegin(GL_QUADS);
 		glColor3f(0.3, 0.3, 0.3);/*Roof*/
 		glTexCoord2d(0, i); glVertex3f(-4, 8, -5);
-		glTexCoord2d(0, i + 1); glVertex3f(-4, 8, 100);
-		glTexCoord2d(1, i + 1); glVertex3f(4, 8, 100);
+		glTexCoord2d(0, i + 1); glVertex3f(-4, 8, 200);
+		glTexCoord2d(1, i + 1); glVertex3f(4, 8, 200);
 		glTexCoord2d(1, i); glVertex3f(4, 8, -5);
 	glEnd();
 	glBindTexture(GL_TEXTURE_2D, 0);
