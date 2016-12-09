@@ -17,7 +17,7 @@ void	render_snowball(void)
 	glPushMatrix();
 	glColor3f(1, 1, 1);
 	glTranslatef(g_eye.ex, g_eye.ey + 0.5, 2);
-	glutSolidSphere(0.25, 30, 10);
+	glutSolidSphere(0.25, 50, 20);
 	glPopMatrix();
 }
 
