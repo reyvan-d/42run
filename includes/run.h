@@ -229,6 +229,10 @@ void			draw_snowman(void);
 */
 void 			draw_short_straight(void);
 /*
+** exit_prog.cpp 
+*/
+void			exit_prog(void);
+/*
 ** change_size.cpp
 */
 void			change_size(int width, int height);

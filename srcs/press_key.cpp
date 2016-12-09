@@ -59,5 +59,5 @@ void	press_key(int key, int x, int y)
 		g_game.health = 100;
 	}
 	else if (key == 27)
-		exit(0);
+		exit_prog();
 }
