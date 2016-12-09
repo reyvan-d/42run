@@ -84,6 +84,7 @@ void	init_g_pos(void)
 
 void	init_glut(int ac, char **av)
 {
+	//srand(rand());
 	init_g_pos();
 	glutInit(&ac, av);
 	//texture = LoadTextureRAW("./textures/floor.data", TRUE);
