@@ -102,6 +102,15 @@
 ** ----------/
 */
 
+typedef struct		s_vertex
+{
+	char		type;
+	float		x;
+	float		y;
+	float		z;
+	float		w;
+}					t_vertex;
+
 typedef struct	s_pos
 {
 	float		angle;
@@ -180,6 +189,10 @@ t_eye			g_eye;
 GLuint			*textures;
 t_win			g_win;
 t_game			g_game;
+t_vertex		fnormals;
+t_vertex		w1normals;
+t_vertex		w2normals;
+t_vertex		cnormals;
 # else
 
 extern t_pos	g_pos;
@@ -187,6 +200,10 @@ extern t_eye	g_eye;
 extern GLuint	*textures;
 extern t_win	g_win;
 extern t_game	g_game;
+extern t_vertex		fnormals;
+extern t_vertex		w1normals;
+extern t_vertex		w2normals;
+extern t_vertex		cnormals;
 # endif
 
 /*
@@ -195,6 +212,8 @@ extern t_game	g_game;
 ** ----------/
 */
 
+void	init_normals(void);
+t_vertex	normalise_point(t_vertex *p1, t_vertex *p2, t_vertex *p3);
 void LoadTextureRAW(GLuint texture, const char *filename, int wrap, int width, int height);
 
 /*

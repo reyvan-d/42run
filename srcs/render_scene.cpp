@@ -12,6 +12,30 @@
 
 #include "../includes/run.h"
 
+t_vertex	normalise_point(t_vertex *p1, t_vertex *p2, t_vertex *p3)
+{
+	t_vertex	u;
+	t_vertex	v;
+	t_vertex	normal;
+	float		temp;
+
+	u.x = p2->x - p1->x;
+	u.y = p2->y - p1->y;
+	u.z = p2->z - p1->z;
+	v.x = p3->x - p1->x;
+	v.y = p3->y - p1->y;
+	v.z = p3->z - p1->z;
+	normal.x = (u.y * v.z) - (u.z * v.y);
+	normal.y = (u.z * v.x) - (u.x * v.z);
+	normal.z = (u.x * v.y) - (u.y * v.x);
+	temp = sqrt(normal.x * normal.x +
+		normal.y * normal.y + normal.z * normal.z);
+	normal.x = (normal.x / temp);
+	normal.y = (normal.y / temp);
+	normal.z = (normal.z / temp);
+	return (normal);
+}
+
 void LoadTextureRAW(GLuint texture, const char *filename, int wrap, int width, int height)
 {
 	unsigned char	*data;
@@ -84,10 +108,13 @@ void	draw_walls(void)
 {
 	static float	i;
 
+	glEnable(GL_NORMALIZE);
+//	glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, textures[0]);
 	glBegin(GL_QUADS);/*Draw the ground*/
 		glColor3f(0.581176, 0.55098, 0.282353);/*Floor*/
+//		glNormal3f(fnormals.x, fnormals.y, fnormals.z);
 		glTexCoord2d(0, i); glVertex3f(-4, 0, -5);
 		glTexCoord2d(0, i + 1); glVertex3f(-4, 0, 200);
 		glTexCoord2d(1, i + 1); glVertex3f(4, 0, 200);
@@ -100,11 +127,13 @@ void	draw_walls(void)
 	glBindTexture(GL_TEXTURE_2D, textures[1]);
 	glBegin(GL_QUADS);
 		glColor3f(0.5098039216, 0.3039215686, 0.3039215686);/*Walls*/
+//		glNormal3f(w1normals.x, w1normals.y, w1normals.z);
 		glTexCoord2d(0, i); glVertex3f(-4, 0, -5);
 		glTexCoord2d(0, i + 1); glVertex3f(-4, 0, 200);
 		glTexCoord2d(1, i + 1); glVertex3f(-4, 8, 200);
 		glTexCoord2d(1, i); glVertex3f(-4, 8, -5);
 
+//		glNormal3f(w2normals.x, w2normals.y, w2normals.z);
 		glTexCoord2d(0, i); glVertex3f(4, 0, -5);
 		glTexCoord2d(0, i + 1); glVertex3f(4, 0, 200);
 		glTexCoord2d(1, i + 1); glVertex3f(4, 8, 200);
@@ -117,6 +146,7 @@ void	draw_walls(void)
 	glBindTexture(GL_TEXTURE_2D, textures[2]);
 	glBegin(GL_QUADS);
 		glColor3f(0.3, 0.3, 0.3);/*Roof*/
+//		glNormal3f(cnormals.x, cnormals.y, cnormals.z);
 		glTexCoord2d(0, i); glVertex3f(-4, 8, -5);
 		glTexCoord2d(0, i + 1); glVertex3f(-4, 8, 200);
 		glTexCoord2d(1, i + 1); glVertex3f(4, 8, 200);
@@ -127,7 +157,9 @@ void	draw_walls(void)
 	if (i == 1)
 		i = 0;
 	if (g_game.mode == MODE_PLAY)
-		i += 0.02f;
+		i += 0.01f;
+//	glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_FALSE);
+	glDisable(GL_NORMALIZE);
 }
 
 /*

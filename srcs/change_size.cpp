@@ -22,7 +22,7 @@ void	change_size(int width, int height)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glViewport(0, 0, width, height);
-	gluPerspective(45.0, ratio, 1.0, 110.0);
+	gluPerspective(45.0, ratio, 1.0, 150.0);
 	glMatrixMode(GL_MODELVIEW);
 	g_win.height = height;
 	g_win.width = width;

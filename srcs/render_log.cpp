@@ -33,6 +33,7 @@ int			draw_log(t_object *log)
 {
 	if (log->object_type != O_LOG)
 		return (-1);
+	glEnable(GL_NORMALIZE);
 	glPushMatrix();
 	glActiveTexture(textures[4]);
 	glEnable(GL_TEXTURE_2D);
@@ -52,5 +53,6 @@ int			draw_log(t_object *log)
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
 	log->eye.ez -= g_game.speed;
+	glDisable(GL_NORMALIZE);
 	return ((log->eye.ez == 0) ? 2 : (log->eye.ez > 0) ? 1 : 0);
 }

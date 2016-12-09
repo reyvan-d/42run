@@ -36,6 +36,7 @@ int			draw_cube(t_object *cube)
 {
 	if (cube->object_type != O_CUBE)
 		return (-1);
+	glEnable(GL_NORMALIZE);
 	glPushMatrix();
 	glColor3f(cube->colour.x, cube->colour.y, cube->colour.z);
 	glTranslatef(cube->eye.ex, cube->eye.ey, cube->eye.ez);
@@ -66,6 +67,7 @@ int			draw_cube(t_object *cube)
 	glDisable(GL_TEXTURE_2D);
 	//glutSolidCube(cube->size);
 	glPopMatrix();
+	glDisable(GL_NORMALIZE);
 	cube->eye.ez -= g_game.speed - 1;
 	return ((cube->eye.ez == 0) ? 2 : (cube->eye.ez > 0) ? 1 : 0);
 }

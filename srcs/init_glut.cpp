@@ -12,8 +12,58 @@
 
 #include "../includes/run.h"
 
-GLfloat light_diffuse[] = {1.0, 1.0, 1.0, 1.0};  /* Red diffuse light. */
-GLfloat light_position[] = {0.0, 5.0, 5.0, 7.0};  /* Infinite light location. */
+GLfloat light_diffuse[] = {1.0, 1.0, 1.0, 1.0};
+GLfloat	light_diff2[] = {0.5, 0.5, 0.5, 0.5};
+GLfloat light_position[] = {0.0, -3.0, 1.0, -1.0};
+GLfloat	light_pos2[] = {0.0, -4.0, -80.0, -1.0};
+
+void	init_normals(void)
+{/*
+	t_vertex	v1;
+	t_vertex	v2;
+	t_vertex	v3;
+
+	v1.x = -4;
+	v1.y = 0;
+	v1.z = -5;
+	v2.x = -4;
+	v2.y = 0;
+	v2.z = 200;
+	v3.x = 4;
+	v3.y = 0;
+	v3.z = 200;
+	fnormals = normalise_point(&v1, &v2, &v3);
+	v1.x = -4;
+	v1.y = 0;
+	v1.z = -5;
+	v2.x = -4;
+	v2.y = 0;
+	v2.z = 200;
+	v3.x = -4;
+	v3.y = 8;
+	v3.z = 200;
+	w1normals = normalise_point(&v1, &v2, &v3);
+	v1.x = 4;
+	v1.y = 0;
+	v1.z = -5;
+	v2.x = 4;
+	v2.y = 0;
+	v2.z = 200;
+	v3.x = 4;
+	v3.y = 8;
+	v3.z = 200;
+	w2normals = normalise_point(&v1, &v2, &v3);
+	v1.x = -4;
+	v1.y = 8;
+	v1.z = -5;
+	v2.x = -4;
+	v2.y = 8;
+	v2.z = 200;
+	v3.x = 4;
+	v3.y = 8;
+	v3.z = 200;
+	cnormals = normalise_point(&v1, &v2, &v3);*/
+}
 
 void	init_g_pos(void)
 {
@@ -43,7 +93,11 @@ void	init_glut(int ac, char **av)
 	glutCreateWindow("42run");
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, light_diff2);
+	glLightfv(GL_LIGHT1, GL_POSITION, light_pos2);
+	glLightf(GL_LIGHT0, GL_SPOT_EXPONENT, 20);
 	glEnable(GL_LIGHT0);
+//	glEnable(GL_LIGHT1);
 	glEnable(GL_LIGHTING);
 	glEnable(GL_COLOR_MATERIAL);
 	textures = new GLuint[6];
@@ -56,6 +110,7 @@ void	init_glut(int ac, char **av)
 	LoadTextureRAW(textures[4], "./textures/table.data", 1, 512, 128);
 	LoadTextureRAW(textures[5], "./textures/apple.data", 1, 128, 128);
 	LoadTextureRAW(textures[6], "./textures/ball.data", 1, 512, 512);
+	init_normals();
 	glutDisplayFunc(render_scene);
 	glutReshapeFunc(change_size);
 	glutIdleFunc(render_scene);

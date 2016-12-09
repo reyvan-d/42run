@@ -14,5 +14,6 @@
 
 void	exit_prog(void)
 {
+	delete textures;
 	exit(0);
 }

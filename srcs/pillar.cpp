@@ -45,6 +45,7 @@ int			draw_pillar(t_object *pillar)
 {
 	if (pillar->object_type != O_PILLAR)
 		return (-1);
+	glEnable(GL_NORMALIZE);
 	glPushMatrix();
 	glActiveTexture(textures[3]);
 	glEnable(GL_TEXTURE_2D);
@@ -69,6 +70,7 @@ int			draw_pillar(t_object *pillar)
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
+	glDisable(GL_NORMALIZE);
 	pillar->eye.ez -= g_game.speed;
 	return ((pillar->eye.ez == 0) ? 2 : (pillar->eye.ez > 0) ? 1 : 0);
 }
