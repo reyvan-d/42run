@@ -34,6 +34,7 @@ SRCS_NAME = abilities.cpp 				\
 			draw_box.cpp				\
 			draw_snowman.cpp			\
 			draw_straight.cpp			\
+			exit_prog.cpp 				\
 			change_size.cpp				\
 			health.cpp					\
 			init_glut.cpp				\
