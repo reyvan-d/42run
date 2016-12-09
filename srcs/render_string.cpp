@@ -64,6 +64,11 @@ void	render_game_stats(void)
 	}
 	sprintf(tmp, "Ability : %s", (g_game.ability_str == NULL) ? "none" : g_game.ability_str);
 	renderBitmapString(5, g_win.height - 15, 0, GLUT_BITMAP_HELVETICA_18, tmp);
+	if (g_game.ability_time > 0)
+	{
+		sprintf(tmp, "Ability time: %0.2f", g_game.ability_time);
+		renderBitmapString(5, g_win.height - 35, 0, GLUT_BITMAP_HELVETICA_18, tmp);
+	}
 	glPopMatrix();
 	glEnable(GL_LIGHTING);
 
