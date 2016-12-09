@@ -47,6 +47,7 @@ void	render_game_stats(void)
 	set_orthographic_projection();
 
 	(void)tmp;
+	glDisable(GL_LIGHTING);
 	glPushMatrix();
 	glLoadIdentity();
 	glColor3f(1, 1, 1);
@@ -64,6 +65,7 @@ void	render_game_stats(void)
 	sprintf(tmp, "Ability : %s", (g_game.ability_str == NULL) ? "none" : g_game.ability_str);
 	renderBitmapString(5, g_win.height - 15, 0, GLUT_BITMAP_HELVETICA_18, tmp);
 	glPopMatrix();
+	glEnable(GL_LIGHTING);
 
 	restore_perspective_projection();
 }
@@ -74,6 +76,7 @@ void	render_game_over(void)
 
 	set_orthographic_projection();
 
+	glDisable(GL_LIGHTING);
 	(void)tmp;
 	glPushMatrix();
 	glLoadIdentity();
@@ -81,6 +84,7 @@ void	render_game_over(void)
 	sprintf(tmp, "GAME OVER. Your Score: %.2f", g_game.score);
 	renderBitmapString((g_win.width / 2), (g_win.height / 2), 0, GLUT_BITMAP_TIMES_ROMAN_24, tmp);
 	glPopMatrix();
+	glEnable(GL_LIGHTING);
 
 	restore_perspective_projection();
 }
@@ -92,12 +96,14 @@ void	render_game_paused(void)
 	set_orthographic_projection();
 
 	(void)tmp;
+	glDisable(GL_LIGHTING);
 	glPushMatrix();
 	glLoadIdentity();
 	glColor3f(0.1, 1, 0.1);
 	sprintf(tmp, "PAUSED");
 	renderBitmapString((g_win.width / 2) - 50, g_win.height / 2, 0, GLUT_BITMAP_TIMES_ROMAN_24, tmp);
 	glPopMatrix();
+	glEnable(GL_LIGHTING);
 
 	restore_perspective_projection();
 }
