@@ -65,6 +65,21 @@ void	init_normals(void)
 	cnormals = normalise_point(&v1, &v2, &v3);*/
 }
 
+void	init_menu(void)
+{
+	//initialise menu
+	g_menupos = 0;
+	g_menu_cursor = 0;
+	strcpy(g_menu[0],"PLAY");
+	strcpy(g_menu[1], " ");
+	strcpy(g_menu[2],"HIGHSCORES");
+	strcpy(g_menu[3]," "); 
+	strcpy(g_menu[4],"ABOUT US");
+	strcpy(g_menu[5]," ");
+	strcpy(g_menu[6],"EXIT");
+	g_nomenuitems = 7;
+}
+
 void	init_g_pos(void)
 {
 	bzero(&g_pos, sizeof(t_pos));
@@ -103,6 +118,9 @@ void	init_glut(int ac, char **av)
 	glEnable(GL_COLOR_MATERIAL);
 	textures = new GLuint[6];
 //	textures = (GLuint *)malloc(sizeof(GLuint) * 6);
+
+	init_menu();
+
 	glGenTextures(7, textures);
 	LoadTextureRAW(textures[0], "./textures/floor.data", 1, 256, 256);
 	LoadTextureRAW(textures[1], "./textures/walls.data", 1, 512, 512);

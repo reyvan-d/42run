@@ -84,7 +84,7 @@ void	render_objects(void)
 		}
 		g_game.render--;
 	}
-	else if (g_game.mode == MODE_STOP)
+	else //if (g_game.mode == MODE_STOP)
 	{
 		while (k < NUM_OBJS)
 		{

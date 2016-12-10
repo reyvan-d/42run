@@ -184,6 +184,18 @@ void	render_scene(void)
 		0.0 + g_eye.ex, 1.0 + g_eye.ey, 1.0 + g_eye.ez,
 		0.0, 2.0, 0.0);
 	draw_walls();
+	if (g_game.mode == MODE_MENU)
+	{
+		//if (g_menupos == 2 && ++g_menupos)//change display if certain code proves true.	
+		//		glutDisplayFunc(displayhighscores);//HIGH_SCORES_DISPLAY
+		//else if (g_menupos == 4 && ++g_menupos)
+		//	glutDisplayFunc(displaystarwars);
+		//if (g_menupos == 5)
+		//	starwarsspeed();
+		displaymenu();
+		//glutPostRedisplay();
+		return ;
+	}
 	if (g_game.mode == MODE_PLAY || g_game.mode == MODE_STOP)
 	{
 		if (g_eye.ey > 0)

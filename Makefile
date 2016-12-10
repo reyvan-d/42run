@@ -39,6 +39,7 @@ SRCS_NAME = abilities.cpp 				\
 			health.cpp					\
 			init_glut.cpp				\
 			main.cpp					\
+			menu.cpp					\
 			pillar.cpp					\
 			press_key.cpp				\
 			random_range.cpp			\

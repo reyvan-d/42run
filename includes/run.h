@@ -93,6 +93,9 @@
 # define MODE_PLAY    1
 # define MODE_STOP    2
 # define MODE_PAUSE   3
+# define MODE_MENU    4
+# define MODE_SCORE   5
+# define MODE_CREDIT  6
 
 /*
 ** ----------\
@@ -172,6 +175,7 @@ typedef struct	s_game
 	const char	*ability_str;
 	float		ability_time;
 	float		tmp;
+	char		m_tmp;
 }				t_game;
 
 /*
@@ -191,6 +195,10 @@ t_vertex		fnormals;
 t_vertex		w1normals;
 t_vertex		w2normals;
 t_vertex		cnormals;
+char			g_menu[7][16];
+int				g_nomenuitems = 0;
+int				g_menu_cursor;
+int				g_menupos;
 # else
 
 extern t_pos	g_pos;
@@ -202,6 +210,10 @@ extern t_vertex		fnormals;
 extern t_vertex		w1normals;
 extern t_vertex		w2normals;
 extern t_vertex		cnormals;
+extern char			g_menu[7][16];
+extern int			g_nomenuitems;
+extern int			g_menu_cursor;
+extern int			g_menupos;
 # endif
 
 /*
@@ -263,6 +275,10 @@ void			calc_collision(t_object object);
 */
 void			init_g_pos(void);
 void			init_glut(int ac, char **av);
+/*
+** menu.cpp
+*/
+void			displaymenu(void);
 /*
 ** pillar.cpp
 */
