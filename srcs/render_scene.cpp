@@ -183,15 +183,17 @@ void	render_scene(void)
 		0.0 + g_eye.ex, 1.0 + g_eye.ey, 0.0 + g_eye.ez,
 		0.0 + g_eye.ex, 1.0 + g_eye.ey, 1.0 + g_eye.ez,
 		0.0, 2.0, 0.0);
-	if (g_eye.ey > 0 && (g_game.mode == MODE_PLAY || g_game.mode == MODE_STOP))
-	{
-		g_eye.ey -= 0.1 * g_game.speed;
-		if (g_eye.ey < 0)
-			g_eye.ey = 0;
-	}
 	draw_walls();
 	if (g_game.mode == MODE_PLAY || g_game.mode == MODE_STOP)
+	{
+		if (g_eye.ey > 0)
+		{
+			g_eye.ey -= 0.1 * g_game.speed;
+			if (g_eye.ey < 0)
+				g_eye.ey = 0;
+		}
 		render_objects();
+	}	
 	if (g_game.mode == MODE_PLAY)
 	{
 		render_game_stats();
