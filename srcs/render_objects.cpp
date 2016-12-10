@@ -14,16 +14,31 @@
 
 void	generate_object(t_object *object)
 {
-	int		k;
+	int				k;
+	static	char	p2;
+	static	char	p1_pos;
 
+	if (p2)
+	{
+		do {
+			*object = generate_pillar();
+		} while ((object->lane & p1_pos));
+		g_game.render += random_range(40, 60);
+		p2 = 0;
+		return ;
+	}
 	k = random_range(1, 5);
 	if (k == O_CUBE && (g_game.render += random_range(40, 70)))
 		*object = generate_cube();
 	else if (k == O_SPHERE)
-		return ;
+	{
+		*object = generate_pillar();
+		p1_pos = object->lane & 0b00000111;
+		p2 = 1;
+	}
 	else if (k == O_TEAPOT && (g_game.render += random_range(15, 30)))
 		*object = generate_teapot();
-	else if (k == O_PILLAR && (g_game.render += random_range(40, 100)))
+	else if (k == O_PILLAR && (g_game.render += random_range(40, 60)))
 		*object = generate_pillar();
 	else if (k == O_LOG && (g_game.render += random_range(30, 60)))
 		*object = generate_log();
