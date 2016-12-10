@@ -20,7 +20,7 @@ t_object	generate_cube(void)
 	bzero(&cube, sizeof(t_object));
 	cube.object_type = O_CUBE;
 	cube.size = 1;
-	cube.eye.ez = RENDER_DIST;
+	cube.eye.ez = RENDER_DIST + 5;
 	tmp = random_range(1, 3);
 	cube.eye.ex = (tmp * 1.5) - 3;
 	cube.lane = (tmp == 1) ? OL_LEFT : (tmp == 2) ? OL_CENTER : OL_RIGHT;
