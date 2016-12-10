@@ -22,11 +22,11 @@ void	render_snowball(void)
 	glEnable(GL_TEXTURE_2D);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);//
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);//
-	glRotatef(k,1.0f,0.0f,0.0f);
+	glRotatef(k, 1.0f, 0.0f, 0.0f);
 	GLUquadric *sphere = gluNewQuadric(); 
-	gluQuadricTexture(sphere,GL_TRUE);
-	glBindTexture(GL_TEXTURE_2D,textures[6]);
-	gluSphere(sphere,0.25,50,50);
+	gluQuadricTexture(sphere, GL_TRUE);
+	glBindTexture(GL_TEXTURE_2D, textures[6]);
+	gluSphere(sphere, 0.25, 50, 50);
 	gluDeleteQuadric(sphere);
 	glDisable(GL_TEXTURE_2D);
 
