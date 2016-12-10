@@ -38,6 +38,8 @@ void	press_key(int key, int x, int y)
 			g_game.mode = MODE_PLAY;
 		else if (key == 27)
 			exit(0);
+		else if (key == 98)
+			goto fscreen;
 		return ;
 	}
 	if (key == GLUT_KEY_RIGHT && g_eye.ex > -2)
@@ -63,6 +65,7 @@ void	press_key(int key, int x, int y)
 		exit_prog();
 	else if (key == 98)
 	{
+fscreen:
 		if (++screenstatus == 1)
 			glutFullScreen();
 		else
